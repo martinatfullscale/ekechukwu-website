@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martin Ekechukwu — Founder · Strategist · Builder</title>
+  <meta name="description" content="Martin Ekechukwu — Brand strategist, founder, and cultural architect operating at the intersection of AI, media, and human connection." />
+  <link rel="canonical" href="https://ekechukwu.com" />
+  <meta property="og:title" content="Martin Ekechukwu" />
+  <meta property="og:description" content="Founder · Strategist · Builder" />
+  <meta property="og:url" content="https://ekechukwu.com" />
+  <meta property="og:image" content="https://ekechukwu.com/images/headshot.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #070707; --surface: #0f0f0f; --gold: #C9A96E; --gold-dim: #8a7149;
+      --cream: #F2EDE4; --muted: #5a5550; --text: #ddd8cf;
+      --border: rgba(201,169,110,0.15);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Karla', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, padding 0.4s; background: rgba(7,7,7,0.75); backdrop-filter: blur(12px); }
+    nav.scrolled { background: rgba(7,7,7,0.96); backdrop-filter: blur(16px); padding: 16px 60px; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.12em; color: var(--gold); text-decoration: none; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero-photo-col { height: 100vh; position: relative; overflow: hidden; }
+    .hero-photo-col img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(15%) contrast(1.06); transition: transform 9s ease; }
+    #heroImg { transform: scale(1.0); }
+    .hero-photo-col::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent 50%, var(--bg) 100%), linear-gradient(to top, rgba(7,7,7,0.6) 0%, transparent 30%); }
+    .hero-content { padding: 0 60px 80px 40px; display: flex; flex-direction: column; justify-content: flex-end; height: 100vh; }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; }
+    .hero-name { font-family: var(--font-display); font-size: clamp(4.5rem, 8vw, 11rem); font-weight: 300; line-height: 0.88; color: var(--cream); letter-spacing: -0.02em; opacity: 0; animation: fadeUp 1s 0.5s forwards; }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .hero-tagline { margin-top: 36px; max-width: 480px; font-size: 1.25rem; line-height: 1.85; color: var(--text); opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+    .hero-tagline strong { color: var(--cream); font-weight: 500; }
+    .hero-tagline strong { color: var(--text); font-weight: 400; }
+    .hero-scroll { margin-top: 52px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeUp 0.6s 1.1s forwards; }
+    .hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2.2s infinite; }
+
+    /* ── SHARED ── */
+    section { padding: 120px 60px; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 60px; display: flex; align-items: center; gap: 20px; }
+    .section-label::after { content: ''; flex: 0 0 60px; height: 1px; background: var(--gold-dim); }
+
+    /* ── ABOUT ── */
+    #about { border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 4.5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 40px; }
+    .about-headline em { font-style: italic; color: var(--gold); }
+    .about-body { font-size: 1.15rem; color: var(--muted); line-height: 1.9; }
+    .about-body p + p { margin-top: 18px; }
+    .about-body strong { color: var(--text); font-weight: 400; }
+    .about-right { padding-top: 0; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-block { background: var(--surface); padding: 36px 28px; border: 1px solid rgba(201,169,110,0.25); transition: background 0.3s, border-color 0.3s; }
+    .stat-block:hover { background: rgba(201,169,110,0.07); border-color: var(--gold-dim); }
+    .stat-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px; }
+    .stat-label { font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); }
+
+    /* ── PHOTO GRID ── */
+    #photos { border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 380px 300px; }
+    .photo-cell { overflow: hidden; position: relative; cursor: default; -webkit-overflow-scrolling: touch; }
+    .photo-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease, filter 0.5s; filter: grayscale(30%) contrast(1.05); }
+    .photo-cell:hover img { transform: scale(1.06); filter: grayscale(0%) contrast(1.05); }
+    .photo-cell::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,7,7,0.65) 0%, transparent 55%); pointer-events: none; }
+    .photo-caption { position: absolute; bottom: 16px; left: 18px; z-index: 2; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,169,110,0.45); transition: color 0.3s; }
+    .photo-cell:hover .photo-caption { color: var(--gold); }
+    /* Featured cell spans 2 cols */
+    .photo-cell.wide { grid-column: span 2; }
+    .photo-cell.tall { grid-row: span 2; }
+
+    /* ── BRANDS ── */
+    #brands { padding: 80px 0; border-top: 1px solid var(--border); }
+    .brands-label { font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text); text-align: center; margin-bottom: 44px; }
+    .brands-marquee-wrap { overflow: hidden; position: relative; }
+    .brands-marquee-wrap::before, .brands-marquee-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; }
+    .brands-marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+    .brands-marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+    .brands-marquee { display: flex; animation: marquee 30s linear infinite; width: max-content; }
+    .brands-marquee:hover { animation-play-state: paused; }
+    .brand-item { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text); letter-spacing: 0.1em; padding: 0 44px; white-space: nowrap; transition: color 0.3s; }
+    .brand-item:hover { color: var(--gold); }
+    .brand-sep { color: var(--gold-dim); font-size: 0.6rem; align-self: center; }
+
+    /* ── VENTURES ── */
+    #ventures { border-top: 1px solid var(--border); background: var(--surface); }
+    .ventures-headline { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 6.5rem); font-weight: 300; color: var(--cream); line-height: 1; letter-spacing: -0.01em; margin-bottom: 80px; }
+    .ventures-headline em { font-style: italic; color: var(--gold); }
+    .venture-list { display: flex; flex-direction: column; }
+    .venture-item { display: grid; grid-template-columns: 60px 1fr auto; align-items: start; gap: 40px; padding: 48px 0; border-bottom: 1px solid rgba(201,169,110,0.2); transition: all 0.3s; }
+    .venture-item:hover .venture-name { color: var(--gold); }
+    .venture-item:hover .venture-index { color: var(--gold-dim); }
+    .venture-index { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: rgba(201,169,110,0.3); line-height: 1.2; transition: color 0.3s; }
+    .venture-name { font-family: var(--font-display); font-size: clamp(1.8rem, 2.8vw, 3rem); font-weight: 300; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 16px; transition: color 0.3s; text-decoration: none; display: inline-block; }
+    .venture-name:hover { color: var(--gold); }
+    .venture-name::after { content: ' ↗'; font-size: 0.5em; vertical-align: super; opacity: 0; transition: opacity 0.3s; }
+    .venture-item:hover .venture-name::after { opacity: 1; }
+    .venture-desc { font-size: 1.1rem; color: var(--text); max-width: 560px; line-height: 1.85; }
+    .venture-tag { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 8px 18px; white-space: nowrap; align-self: flex-start; margin-top: 6px; transition: border-color 0.3s, color 0.3s, background 0.3s; }
+    .venture-item:hover .venture-tag { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+
+    /* ── AWARD ── */
+    #award { border-top: 1px solid var(--border); padding: 0; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+    .award-photo { overflow: hidden; position: relative; }
+    .award-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(20%) contrast(1.05); transition: transform 0.8s ease; }
+    .award-photo:hover img { transform: scale(1.04); }
+    .award-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(ellipse at 80% 50%, rgba(201,169,110,0.1) 0%, transparent 70%); }
+    .award-pre { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+    .award-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 6.5rem); font-weight: 300; color: var(--cream); line-height: 0.9; letter-spacing: -0.02em; }
+    .award-headline em { font-style: italic; color: var(--gold); }
+    .award-sub { font-size: 1.1rem; color: var(--text); margin-top: 28px; line-height: 1.7; }
+
+    /* ── PRESS ── */
+    #press { border-top: 1px solid var(--border); }
+    /* Inc. hero card */
+    .press-hero {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 2px;
+      background: var(--surface); border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .press-hero:hover { border-color: var(--gold-dim); }
+    .press-hero-img { overflow: hidden; height: 520px; }
+    .press-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; transition: transform 0.7s; filter: grayscale(10%); }
+    .press-hero:hover .press-hero-img img { transform: scale(1.04); }
+    .press-hero-content { padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; min-height: 520px; }
+    .press-hero-outlet { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .press-hero-headline { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 300; color: var(--cream); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 20px; }
+    .press-hero-headline em { font-style: italic; color: var(--gold); }
+    .press-hero-body { font-size: 1.1rem; color: var(--muted); line-height: 1.85; }
+    /* Grid cards */
+    .press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .press-card { background: var(--surface); border: 1px solid var(--border); padding: 36px 32px; display: flex; flex-direction: column; gap: 14px; transition: background 0.3s, border-color 0.3s, transform 0.3s; text-decoration: none; color: inherit; }
+    .press-card:hover { background: rgba(201,169,110,0.04); border-color: var(--gold-dim); transform: translateY(-4px); }
+    .press-outlet { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .press-headline { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: var(--cream); line-height: 1.3; }
+    .press-body { font-size: 1rem; color: var(--muted); line-height: 1.8; flex: 1; }
+
+    /* ── PODCAST ── */
+    #podcast { border-top: 1px solid var(--border); background: var(--surface); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .podcast-headline { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 5.5rem); font-weight: 300; color: var(--cream); line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 24px; }
+    .podcast-headline em { font-style: italic; color: var(--gold); }
+    .podcast-body { font-size: 1.15rem; color: var(--muted); line-height: 1.9; margin-bottom: 32px; }
+    .podcast-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .podcast-link { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 10px 20px; text-decoration: none; transition: border-color 0.3s, background 0.3s; }
+    .podcast-link:hover { border-color: var(--gold); background: rgba(201,169,110,0.07); }
+    .video-wrap { display: flex; flex-direction: column; gap: 0; }
+    .video-container { position: relative; width: 100%; aspect-ratio: 9/16; max-height: 520px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
+    .video-container iframe { width: 100%; height: 100%; border: none; }
+    .video-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .video-placeholder-bg { position: absolute; inset: 0; background-image: url('images/studio.jpg'); background-size: 280%; background-position: 25% 5%; filter: grayscale(50%) brightness(0.28); }
+    .video-placeholder-content { position: relative; z-index: 1; text-align: center; cursor: pointer; }
+    .play-btn { width: 68px; height: 68px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; transition: background 0.3s, transform 0.2s; }
+    .play-btn:hover { background: rgba(201,169,110,0.2); transform: scale(1.1); }
+    .play-btn svg { fill: var(--gold); width: 24px; height: 24px; margin-left: 5px; }
+    .video-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .video-sublabel { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
+    .spotify-btn { display: flex; align-items: center; gap: 12px; background: rgba(29,185,84,0.1); border: 1px solid rgba(29,185,84,0.3); color: #1DB954; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 18px 28px; transition: background 0.3s, border-color 0.3s; margin-top: 0; }
+    .spotify-btn:hover { background: rgba(29,185,84,0.18); border-color: rgba(29,185,84,0.6); }
+
+    /* ── SPEAKING ── */
+    #speaking { border-top: 1px solid var(--border); }
+    .speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .speaking-headline { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 5rem); font-weight: 300; color: var(--cream); line-height: 1.05; letter-spacing: -0.01em; }
+    .speaking-headline em { font-style: italic; color: var(--gold); }
+    .speaking-body { font-size: 1.1rem; color: var(--muted); line-height: 1.9; margin-top: 24px; }
+    .speaking-list { display: flex; flex-direction: column; }
+    .speaking-item { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.3s; }
+    .speaking-item:hover { padding-left: 6px; }
+    .speaking-item:hover .speaking-event { color: var(--gold); }
+    .speaking-event { font-family: var(--font-display); font-size: 1.35rem; color: var(--cream); transition: color 0.3s; }
+    .speaking-meta { font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-align: right; }
+    .upcoming-badge { display: inline-block; font-family: var(--font-body); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bg); background: var(--gold); padding: 2px 8px; border-radius: 20px; vertical-align: middle; margin-left: 10px; position: relative; top: -2px; }
+
+    /* ── WHAT'S NEXT ── */
+    #next { border-top: 1px solid var(--border); background: var(--surface); }
+    .next-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 6.5rem); font-weight: 300; color: var(--cream); line-height: 1; letter-spacing: -0.01em; margin-bottom: 16px; }
+    .next-headline em { font-style: italic; color: var(--gold); }
+    .next-intro { font-size: 1.1rem; color: var(--text); line-height: 1.8; max-width: 540px; margin-bottom: 72px; }
+    .next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .next-card { background: var(--bg); border: 1px solid var(--border); padding: 44px 36px; display: flex; flex-direction: column; gap: 18px; transition: border-color 0.3s, background 0.3s; }
+    .next-card:hover { background: rgba(201,169,110,0.04); border-color: var(--gold-dim); }
+    .next-card-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+    .next-card-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 300; color: var(--cream); line-height: 1.15; }
+    .next-card-body { font-size: 1rem; color: var(--text); line-height: 1.8; flex: 1; }
+    .next-card-status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dim); margin-top: 8px; }
+    .next-card-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* ── CONNECT ── */
+    #connect { border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .connect-headline { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 7.5rem); font-weight: 300; color: var(--cream); line-height: 0.92; letter-spacing: -0.02em; }
+    .connect-headline em { font-style: italic; color: var(--gold); }
+    .connect-body { font-size: 1.15rem; color: var(--muted); line-height: 1.9; margin-bottom: 40px; }
+    .connect-links { display: flex; flex-direction: column; }
+    .connect-link { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); font-size: 1.05rem; letter-spacing: 0.04em; transition: all 0.3s; }
+    .connect-link:hover { color: var(--gold); padding-left: 10px; }
+    .connect-link span { color: var(--muted); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+    .footer-copy { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      nav { padding: 20px 20px; } nav.scrolled { padding: 14px 20px; } .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      #hero { grid-template-columns: 1fr; } .hero-photo-col { height: 65vh; } .hero-content { padding: 32px 20px 56px; height: auto; }
+      .hero-tagline { font-size: 1rem; max-width: 100%; }
+      #about { grid-template-columns: 1fr; gap: 40px; } .about-right { padding-top: 0; }
+      .about-headline { font-size: 2.4rem; }
+      #photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } .photo-cell { height: 180px; } .photo-cell.wide { grid-column: span 2; } .photo-cell.tall { grid-row: span 1; }
+      #ventures { padding: 64px 20px; }
+      .ventures-headline { font-size: 2.8rem; margin-bottom: 48px; }
+      .venture-item { display: flex; flex-direction: column; gap: 12px; padding: 36px 0; }
+      .venture-index { display: none; }
+      .venture-name { font-size: 1.8rem; }
+      .venture-desc { font-size: 0.95rem; max-width: 100%; }
+      .venture-tag { align-self: flex-start; }
+      .press-hero { grid-template-columns: 1fr; } .press-hero-img { height: 260px; } .press-hero-content { padding: 32px 24px; }
+      .press-grid { grid-template-columns: 1fr; }
+      #podcast { grid-template-columns: 1fr; gap: 40px; }
+      .video-container { aspect-ratio: 16/9; max-height: none; }
+      .speaking-grid { grid-template-columns: 1fr; gap: 40px; }
+      .speaking-event { font-size: 1rem; }
+      #connect { grid-template-columns: 1fr; gap: 40px; }
+      .connect-headline { font-size: 3.5rem; }
+      #award { grid-template-columns: 1fr; padding: 0; } .award-photo { height: 320px; } .award-content { padding: 48px 20px; } .award-headline { font-size: 3rem; }
+      .next-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a class="nav-logo" href="#">Martin Ekechukwu</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#next">What's Next</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-photo-col">
+      <img src="images/headshot.png" alt="Martin Ekechukwu" id="heroImg" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Founder · Strategist · Builder</p>
+      <h1 class="hero-name">Martin<br><em>Ekechukwu</em></h1>
+      <p class="hero-tagline"><strong>Brand strategist, founder, and cultural architect</strong> operating at the intersection of AI, media, and human connection.</p>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div>
+      <div class="section-label">About</div>
+      <h2 class="about-headline reveal">Two continents.<br>One <em>trajectory.</em></h2>
+      <div class="about-body reveal reveal-delay-2">
+        <p>Born between Nigeria and the Czech Republic, Martin Ekechukwu built a career at the intersection of culture, commerce, and conviction. From a high jump track at the <strong>University of Arkansas</strong> to shaping brand strategy at the highest levels of CPG, entertainment, and tech — the path has always moved forward.</p>
+        <p>After an MBA from <strong>Duke's Fuqua School of Business</strong> and formative years at Toyota, Bacardi, and Pernod Ricard, Martin pivoted to building. Village Tea Company. WHTWRKS. A-Frame Brands. FullScale Holdings. Each venture a distinct expression of the same instinct: <strong>find where culture and commerce collide, then build something durable there.</strong></p>
+        <p>Media runs deep. WHTWRKS was born <strong>inside ViacomCBS</strong> — shaped by the infrastructure, the relationships, and the creative muscle of one of the most powerful media companies on the planet. That foundation informed everything: how Martin thinks about distribution, audience, and the machinery behind culture. <strong>A technical founder</strong> who moves between boardrooms and build cycles.</p>
+        <p>Today he's focused on FullScale — an AI-powered media infrastructure company for the creator economy — while continuing to mentor, speak, and co-host <strong>The Quiet Truth Podcast</strong> with author Enitan Bereola.</p>
+      </div>
+    </div>
+    <div class="about-right reveal reveal-delay-3">
+      <div class="stat-grid">
+        <div class="stat-block"><div class="stat-number">20+</div><div class="stat-label">Years in Brand Strategy</div></div>
+        <div class="stat-block"><div class="stat-number">$30M</div><div class="stat-label">Capital Raised Across Ventures</div></div>
+        <div class="stat-block"><div class="stat-number">14</div><div class="stat-label">Brands Launched & Scaled</div></div>
+        <div class="stat-block"><div class="stat-number">∞</div><div class="stat-label">Raised in Media. Built for What's Next.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHOTO GRID ── -->
+  <div id="photos">
+    <!-- Row 1 -->
+    <div class="photo-cell wide">
+      <img src="images/theater.jpg" alt="Martin Ekechukwu" style="object-position: center 75%;" />
+      <div class="photo-caption">On reflection</div>
+    </div>
+    <div class="photo-cell">
+      <img src="images/inthedetails.jpg" alt="Martin Ekechukwu" style="object-position: center 20%;" />
+      <div class="photo-caption">In the details</div>
+    </div>
+    <div class="photo-cell" style="cursor:pointer;" onclick="playMosaicVideo(this)">
+      <img src="images/hot97_thumb.jpg" alt="Hot 97" style="width:100%;height:100%;object-fit:cover;object-position:center top;" class="mosaic-thumb" />
+      <video muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:none;position:absolute;top:0;left:0;" data-src="images/hot97_video.mp4">
+        <source src="images/hot97_video.mp4" type="video/mp4" />
+      </video>
+      <div class="photo-caption">Hot 97</div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;pointer-events:none;" class="play-overlay">
+        <div style="width:52px;height:52px;border:2px solid rgba(201,169,110,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(7,7,7,0.45);backdrop-filter:blur(4px);">
+          <svg viewBox="0 0 24 24" style="fill:#C9A96E;width:20px;height:20px;margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="photo-cell">
+      <img src="images/jed.jpg" alt="Martin at Black Ambition" style="object-position: center 20%;" />
+      <div class="photo-caption">Black Ambition</div>
+    </div>
+    <div class="photo-cell">
+      <img src="images/fire_event.jpg" alt="Brand Like a Boss: Storytelling Secrets — McDermott Concert Hall" style="object-position: 28% 53%; transform: scale(2.2); transform-origin: 28% 53%;" />
+      <div class="photo-caption">After dark</div>
+    </div>
+    <div class="photo-cell wide">
+      <img src="images/community.jpg" alt="Community" style="object-position: center 65%; transform: scale(1.15); transform-origin: center 65%;" />
+      <div class="photo-caption">Community</div>
+    </div>
+  </div>
+
+  <!-- ── BRANDS ── -->
+  <div id="brands">
+    <p class="brands-label">Selected collaborations &amp; partnerships</p>
+    <div class="brands-marquee-wrap">
+      <div class="brands-marquee">
+        <span class="brand-item">Nike</span><span class="brand-sep">·</span>
+        <span class="brand-item">Meta</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pepsi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Moët Hennessy</span><span class="brand-sep">·</span>
+        <span class="brand-item">Def Jam</span><span class="brand-sep">·</span>
+        <span class="brand-item">Janet Jackson</span><span class="brand-sep">·</span>
+        <span class="brand-item">Nas</span><span class="brand-sep">·</span>
+        <span class="brand-item">Naomi Osaka</span><span class="brand-sep">·</span>
+        <span class="brand-item">Gabrielle Union</span><span class="brand-sep">·</span>
+        <span class="brand-item">Dwyane Wade</span><span class="brand-sep">·</span>
+        <span class="brand-item">John Legend</span><span class="brand-sep">·</span>
+        <span class="brand-item">Bacardi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pernod Ricard</span><span class="brand-sep">·</span>
+        <span class="brand-item">Nike</span><span class="brand-sep">·</span>
+        <span class="brand-item">Meta</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pepsi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Moët Hennessy</span><span class="brand-sep">·</span>
+        <span class="brand-item">Def Jam</span><span class="brand-sep">·</span>
+        <span class="brand-item">Janet Jackson</span><span class="brand-sep">·</span>
+        <span class="brand-item">Nas</span><span class="brand-sep">·</span>
+        <span class="brand-item">Naomi Osaka</span><span class="brand-sep">·</span>
+        <span class="brand-item">Gabrielle Union</span><span class="brand-sep">·</span>
+        <span class="brand-item">Dwyane Wade</span><span class="brand-sep">·</span>
+        <span class="brand-item">John Legend</span><span class="brand-sep">·</span>
+        <span class="brand-item">Bacardi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pernod Ricard</span><span class="brand-sep">·</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VENTURES ── -->
+  <section id="ventures">
+    <div class="section-label reveal">Ventures</div>
+    <h2 class="ventures-headline reveal">Built from<br><em>conviction.</em></h2>
+    <div class="venture-list">
+      <div class="venture-item reveal">
+        <div class="venture-index">01</div>
+        <div><a href="https://gofullscale.co" target="_blank" rel="noopener" class="venture-name">FullScale Holdings</a><div class="venture-desc">AI-powered media infrastructure for the creator economy. Martin's current primary venture sits at the convergence of artificial intelligence, advertising technology, and the next generation of content monetization.</div></div>
+        <div class="venture-tag">Current · AI &amp; Media</div>
+      </div>
+      <div class="venture-item reveal reveal-delay-1">
+        <div class="venture-index">02</div>
+        <div><a href="https://whtwrks.com" target="_blank" rel="noopener" class="venture-name">WHTWRKS</a><div class="venture-desc">Co-founded with music industry veteran Jeffrey Burroughs and global brand leader, music veteran and consultant Tamara Spinner. A marketing agency and cultural consultancy connecting brands to diverse audiences through music and entertainment — including a debut Hennessy × Nas collaboration that ran for seven consecutive years.</div></div>
+        <div class="venture-tag">2011 – Present</div>
+      </div>
+      <div class="venture-item reveal reveal-delay-2">
+        <div class="venture-index">03</div>
+        <div><a href="https://aframebrands.com" target="_blank" rel="noopener" class="venture-name">A-Frame Brands</a><div class="venture-desc">As Chief Strategy Officer, led brand, creative, corporate, sales, and partnership strategy across a portfolio of talent-led personal care brands — Kinlò (Naomi Osaka), Proudly (Gabrielle Union &amp; Dwyane Wade), and Loved01 (John Legend). Raised $11.2M from Forerunner Ventures and Initialized Capital.</div></div>
+        <div class="venture-tag">CSO · $11.2M Raised</div>
+      </div>
+      <div class="venture-item reveal reveal-delay-3">
+        <div class="venture-index">04</div>
+        <div><a href="https://www.prnewswire.com/news-releases/affinity-beverage-group-inc-announces-the-acquisition-of-tea-company-300175850.html" target="_blank" rel="noopener" class="venture-name">Village Tea Company</a><div class="venture-desc">A personal story turned CPG venture — growing from $69K in year-one revenue to $750K by 2012, and landing shelf space at Whole Foods, Vitamin Shoppe, and Amazon. Sparked by a grandmother's loose-leaf ritual in the Czech Republic. Successfully exited to Affinity Brands Group.</div></div>
+        <div class="venture-tag">2009 · Exited to Affinity Brands</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AWARD ── -->
+  <div id="award">
+    <div class="award-photo">
+      <img src="images/black_ambition.jpg" alt="Black Ambition Prize Winners with Pharrell Williams" />
+    </div>
+    <div class="award-content">
+      <div class="award-pre reveal">Recognition</div>
+      <h2 class="award-headline reveal reveal-delay-1">Black Ambition<br><em>Prize Winner</em></h2>
+      <p class="award-sub reveal reveal-delay-2">Pharrell Williams' entrepreneurship competition honoring founders reshaping the future. Martin was selected alongside a cohort of the country's most compelling Black and Hispanic entrepreneurs.</p>
+    </div>
+  </div>
+
+  <!-- ── PRESS ── -->
+  <section id="press">
+    <div class="section-label reveal">Press</div>
+
+    <!-- Inc. Magazine Hero Feature -->
+    <div class="press-hero reveal">
+      <div class="press-hero-img">
+        <img src="images/inc_magazine.jpg" alt="Inc. Magazine — Martin Ekechukwu" />
+      </div>
+      <div class="press-hero-content">
+        <div class="press-hero-outlet">Inc. Magazine — May / June 2023</div>
+        <h3 class="press-hero-headline">"You love our culture.<br>You love our music.<br><em>Do you really love us?"</em></h3>
+        <p class="press-hero-body">A feature on Martin and WHTWRKS — and the pivotal moment when PepsiCo called during the summer of 2020 asking for help telling the real story. A candid, magazine-length examination of what it actually means for brands to show up for the communities they profit from.</p>
+      </div>
+    </div>
+
+    <div class="press-grid" style="margin-top: 2px;">
+      <a href="https://www.adweek.com/brand-marketing/ceo-on-building-a-brand-portfolio-for-founders-of-color/" target="_blank" rel="noopener" class="press-card reveal"><div class="press-outlet">Adweek</div><div class="press-headline">CSO Martin Ekechukwu & Founders of Color at A-Frame Brands</div><div class="press-body">Featured for scaling talent-led personal care brands for underserved markets, building equity for founders of color through the A-Frame portfolio.</div></a>
+      <a href="https://www.campaignlive.com/article/close-up-whtwrks-ceo-martin-ekechukwu/1821543" target="_blank" rel="noopener" class="press-card reveal reveal-delay-1"><div class="press-outlet">Campaign US</div><div class="press-headline">Close-Up: WHTWRKS CEO Martin Ekechukwu</div><div class="press-body">A profile on building a cultural consultancy connecting brands to diverse audiences through music, entertainment, and authentic storytelling.</div></a>
+      <a href="https://www.blackenterprise.com/marketing-strategist-sees-purpose-in-helping-others/" target="_blank" rel="noopener" class="press-card reveal reveal-delay-2"><div class="press-outlet">Black Enterprise</div><div class="press-headline">Marketing Strategist Sees Purpose in Helping Others</div><div class="press-body">Two features spanning the Village Tea retail journey and a philosophy of purposeful brand-building — using business as a vehicle for community impact.</div></a>
+      <a href="https://shoppeblack.us/2022/03/a-frame-brands-secures-11-2-million/" target="_blank" rel="noopener" class="press-card reveal reveal-delay-3"><div class="press-outlet">Shoppe Black</div><div class="press-headline">A-Frame Brands Secures $11M from Forerunner &amp; Initialized</div><div class="press-body">Coverage of the landmark raise for talent-led personal care brands serving underrepresented consumers.</div></a>
+      <a href="https://www.inc.com/magazine" target="_blank" rel="noopener" class="press-card reveal reveal-delay-4"><div class="press-outlet">Inc. Magazine — May/June 2023</div><div class="press-headline">Five Questions with Entrepreneur Martin Ekechukwu</div><div class="press-body">A conversation about his path from academic scholarship athlete to global brand strategist — listed on the University of Arkansas Notable Alumni page.</div></a>
+      <a href="https://brandinnovators.com/content/brand-innovators-sxsw-2023" target="_blank" rel="noopener" class="press-card reveal reveal-delay-5"><div class="press-outlet">Brand Innovators @ SXSW</div><div class="press-headline">Marketing Leadership Summit — 2023</div><div class="press-body">Featured speaker at Brand Innovators' flagship summit during SXSW, alongside Advertising Week NY and the FounderMade Innovation Show.</div></a>
+    </div>
+  </section>
+
+  <!-- ── PODCAST / VIDEO ── -->
+  <section id="podcast">
+    <div class="reveal">
+      <div class="section-label">On Air</div>
+      <h2 class="podcast-headline">The Quiet<br><em>Truth.</em></h2>
+      <p class="podcast-body">Co-hosted with author and speaker Enitan Bereola, The Quiet Truth is an honest conversation about business, culture, and identity — the things people think but rarely say out loud. Available on iHeart Radio and Spotify.</p>
+      <div class="podcast-links">
+        <a href="https://www.quiettruthpodcast.com/" target="_blank" rel="noopener" class="podcast-link">Official Site</a>
+        <a href="https://open.spotify.com/show/3tFGgdz2GQWJ5JQRV4kZRJ" target="_blank" rel="noopener" class="podcast-link">Spotify</a>
+        <a href="https://www.iheart.com/podcast/the-quiet-truth/" target="_blank" rel="noopener" class="podcast-link">iHeart</a>
+      </div>
+    </div>
+    <div class="video-wrap reveal reveal-delay-2">
+      <div class="video-container" id="videoContainer">
+        <div class="video-placeholder" id="videoPlaceholder">
+          <div class="video-placeholder-bg"></div>
+          <div class="video-placeholder-content" onclick="loadVideo()">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="video-label">The Quiet Truth</div>
+            <div class="video-sublabel">Watch an Episode</div>
+          </div>
+        </div>
+      </div>
+      <a href="https://open.spotify.com/show/3tFGgdz2GQWJ5JQRV4kZRJ" target="_blank" rel="noopener" class="spotify-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        Listen on Spotify
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SPEAKING ── -->
+  <section id="speaking">
+    <div class="speaking-grid">
+      <div>
+        <div class="section-label reveal">On Stage</div>
+        <h2 class="speaking-headline reveal">The conversation<br>continues <em>here.</em></h2>
+        <p class="speaking-body reveal reveal-delay-1">From SXSW to Advertising Week, Martin speaks on brand-building, the creator economy, AI infrastructure, and what it means to build with purpose. He also mentors young Black men annually at Duke's Fuqua School of Business.</p>
+      </div>
+      <div class="speaking-list reveal reveal-delay-2">
+        <div class="speaking-item"><div class="speaking-event">SXSW 2026 <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">Austin · Mar 12–18</div></div>
+        <div class="speaking-item"><div class="speaking-event">AI Builders Day <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">New York · Mar 19</div></div>
+        <div class="speaking-item"><div class="speaking-event">Hustle Fund <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">Apr 7</div></div>
+        <div class="speaking-item"><div class="speaking-event">Cannes Lions 2026 <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">Cannes · Jun 22–26</div></div>
+        <div class="speaking-item"><div class="speaking-event">Brand Innovators @ SXSW</div><div class="speaking-meta">Austin · 2023</div></div>
+        <div class="speaking-item"><div class="speaking-event">Advertising Week New York</div><div class="speaking-meta">New York · 2022</div></div>
+        <div class="speaking-item"><div class="speaking-event">FounderMade Innovation Show</div><div class="speaking-meta">New York</div></div>
+        <div class="speaking-item"><div class="speaking-event">The Quiet Truth Podcast</div><div class="speaking-meta">iHeart · Spotify · Co-host</div></div>
+        <div class="speaking-item"><div class="speaking-event">Blackxecutive Podcast</div><div class="speaking-meta">iHeart · Guest</div></div>
+        <div class="speaking-item"><div class="speaking-event">Silver Lining Series</div><div class="speaking-meta">Podcast · Guest</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT'S NEXT ── -->
+  <section id="next">
+    <div class="section-label reveal">What's Next</div>
+    <h2 class="next-headline reveal">Still<br><em>building.</em></h2>
+    <p class="next-intro reveal reveal-delay-1">The work in progress. Three fronts, one through-line: building things that last at the intersection of culture, technology, and commerce.</p>
+    <div class="next-grid">
+      <div class="next-card reveal">
+        <div class="next-card-label">AI · Media · Infrastructure</div>
+        <div class="next-card-title"><a href="https://www.canva.com/design/DAG-g19m2II/PzEtOC4DhLT_LsSSt0lp7w/view?utm_content=DAG-g19m2II&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5b010fc1f6" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.4); transition: border-color 0.3s;">FullScale Holdings — Seed Round ↗</a></div>
+        <div class="next-card-body">FullScale is actively raising its seed round to build the AI-powered media infrastructure layer for the creator economy — connecting content monetization, programmatic advertising, and creator tools in one unified platform. Think of it as the missing infrastructure layer between talent and revenue.</div>
+        <div class="next-card-status">Fundraising Active</div>
+      </div>
+      <div class="next-card reveal reveal-delay-1">
+        <div class="next-card-label">Culture · Consulting · Brand</div>
+        <div class="next-card-title">WHTWRKS — New Engagements</div>
+        <div class="next-card-body">WHTWRKS continues to connect the world's most iconic brands to culture. After 15+ years building the playbook for authentic brand-community relationships, the consultancy is taking on new partnerships at the intersection of music, entertainment, and emerging media — with a sharper focus on the brands willing to do more than just show up.</div>
+        <div class="next-card-status">Accepting Partnerships</div>
+      </div>
+      <div class="next-card reveal reveal-delay-2">
+        <div class="next-card-label">Podcast · iHeart · Spotify</div>
+        <div class="next-card-title">The Quiet Truth — Season Ongoing</div>
+        <div class="next-card-body">The Quiet Truth Podcast with Enitan Bereola keeps going deeper — honest conversations about business, identity, and the things people think but rarely say out loud. New episodes drop regularly on iHeart Radio and Spotify. If you've been building something in the dark, this one's for you.</div>
+        <div class="next-card-status">New Episodes Dropping</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONNECT ── -->
+  <section id="connect">
+    <h2 class="connect-headline reveal">Let's<br>build<br><em>together.</em></h2>
+    <div>
+      <p class="connect-body reveal reveal-delay-1">Whether you're an investor, a founder, a brand, or someone with a compelling idea — Martin's approach starts with a conversation.</p>
+      <div class="connect-links reveal reveal-delay-2">
+        <a href="https://www.linkedin.com/in/martinekechukwu/" target="_blank" rel="noopener" class="connect-link">LinkedIn <span>→</span></a>
+        <a href="mailto:martin@quiettruthpodcast.com" class="connect-link">The Quiet Truth Podcast <span>→</span></a>
+        <a href="mailto:martin@whtwrks.com" class="connect-link">WHTWRKS <span>→</span></a>
+        <a href="mailto:martin@gofullscale.co" class="connect-link">FullScale Holdings <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Martin Ekechukwu</div>
+    <div class="footer-copy">© 2026 · Lagos · Prague · New York</div>
+  </footer>
+
+  <script>
+    // Nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+    // Reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hero zoom
+    setTimeout(() => { const img = document.getElementById('heroImg'); if (img) img.style.transform = 'scale(1.05)'; }, 100);
+
+    // Video — YouTube Shorts embed
+    const VIDEO_ID = 'af9TE3f6Dwc';
+    function loadVideo() {
+      const container = document.getElementById('videoContainer');
+      container.innerHTML = `<iframe src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>`;
+    }
+  function playMosaicVideo(cell) {
+    const thumb = cell.querySelector('.mosaic-thumb');
+    const video = cell.querySelector('video');
+    const overlay = cell.querySelector('.play-overlay');
+    thumb.style.display = 'none';
+    if (overlay) overlay.style.display = 'none';
+    video.style.display = 'block';
+    video.play();
+  }
+  </script>
+</body>
+</html>
