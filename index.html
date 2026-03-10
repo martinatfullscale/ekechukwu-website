@@ -3,1389 +3,579 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adopt-A-State | You Already Donated</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <meta property="og:title" content="Adopt-A-State | You Already Donated">
-  <meta property="og:description" content="Your federal tax dollars fund other states. Now you can adopt one.">
-  <meta property="og:image" content="https://iadoptedastate.org/favicon-512.png">
-  <meta property="og:url" content="https://iadoptedastate.org">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Martin Ekechukwu — Founder · Strategist · Builder</title>
+  <meta name="description" content="Martin Ekechukwu — Brand strategist, founder, and cultural architect operating at the intersection of AI, media, and human connection." />
+  <link rel="canonical" href="https://ekechukwu.com" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  <link rel="apple-touch-icon" href="images/favicon.svg" />
+  <meta property="og:title" content="Martin Ekechukwu" />
+  <meta property="og:description" content="Founder · Strategist · Builder" />
+  <meta property="og:url" content="https://ekechukwu.com" />
+  <meta property="og:image" content="https://ekechukwu.com/images/headshot.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500&display=swap" rel="stylesheet" />
+
   <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --cream: #f5f0e8;
-      --warm-white: #faf8f3;
-      --brown: #3a2a1a;
-      --mid-brown: #7a5c3a;
-      --amber: #c8860a;
-      --faded-red: #b84040;
-      --faded-blue: #3a5a8a;
-      --soft-gray: #d8d0c4;
-      --text-muted: #8a7a6a;
+      --bg: #070707; --surface: #0f0f0f; --gold: #C9A96E; --gold-dim: #8a7149;
+      --cream: #F2EDE4; --muted: #5a5550; --text: #ddd8cf;
+      --border: rgba(201,169,110,0.15);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Karla', sans-serif;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background-color: var(--cream);
-      color: var(--brown);
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-weight: 300;
-    }
-
-    /* ── GRAIN OVERLAY ── */
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-weight: 300; line-height: 1.7; overflow-x: hidden; }
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.4;
-    }
-
-    /* ── TOP BANNER ── */
-    .top-banner {
-      background: var(--brown);
-      color: var(--cream);
-      text-align: center;
-      padding: 10px 20px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
     }
 
     /* ── NAV ── */
-    nav {
-      background: var(--warm-white);
-      border-bottom: 1px solid var(--soft-gray);
-      padding: 18px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo-heart {
-      font-size: 24px;
-    }
-
-    .logo-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-
-    .logo-sub {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      display: block;
-    }
-
-    nav .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--mid-brown);
-    }
-
-    nav .nav-links a { text-decoration: none; color: inherit; }
-    nav .nav-links a:hover { color: var(--amber); }
-
-    .nav-cta {
-      background: var(--amber);
-      color: white;
-      padding: 10px 22px;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; transition: background 0.4s, padding 0.4s; background: rgba(7,7,7,0.75); backdrop-filter: blur(12px); }
+    nav.scrolled { background: rgba(7,7,7,0.96); backdrop-filter: blur(16px); padding: 16px 60px; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: 0.12em; color: var(--gold); text-decoration: none; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { font-size: 0.85rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--gold); }
 
     /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: var(--brown);
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: 
-        linear-gradient(to right, rgba(30,18,8,0.95) 45%, rgba(30,18,8,0.3) 100%),
-        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600') center/cover no-repeat;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 640px;
-      padding: 80px 80px;
-    }
-
-    .hero-eyebrow {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 5vw, 62px);
-      line-height: 1.1;
-      color: var(--warm-white);
-      margin-bottom: 28px;
-      font-weight: 700;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--amber);
-    }
-
-    .hero p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: rgba(245,240,232,0.8);
-      margin-bottom: 40px;
-      font-weight: 300;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .btn-primary {
-      background: var(--amber);
-      color: white;
-      padding: 16px 36px;
-      font-size: 13px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover { background: #a06d08; }
-
-    .btn-ghost {
-      color: var(--warm-white);
-      font-size: 13px;
-      letter-spacing: 1px;
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: 'Source Serif 4', serif;
-      opacity: 0.7;
-    }
-
-    .hero-stat-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(200,134,10,0.15);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid rgba(200,134,10,0.3);
-      display: flex;
-      justify-content: center;
-      gap: 80px;
-      padding: 24px;
-    }
-
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat .num {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--amber);
-    }
-
-    .hero-stat .label {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.6);
-      margin-top: 4px;
-    }
-
-    /* ── INTRO SECTION ── */
-    .intro {
-      max-width: 760px;
-      margin: 100px auto;
-      padding: 0 40px;
-      text-align: center;
-    }
-
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 20px;
-    }
-
-    .intro h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.5vw, 44px);
-      line-height: 1.25;
-      margin-bottom: 28px;
-    }
-
-    .intro p {
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--mid-brown);
-      margin-bottom: 20px;
-    }
-
-    .intro .attribution {
-      font-size: 12px;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      margin-top: 32px;
-      padding-top: 24px;
-      border-top: 1px solid var(--soft-gray);
-    }
-
-    /* ── CARD CTA ── */
-    .card-cta-section {
-      background: var(--brown);
-      padding: 100px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(200,134,10,0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .card-cta-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .card-cta-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4.5vw, 56px);
-      color: var(--cream);
-      line-height: 1.2;
-      margin-bottom: 20px;
-    }
-
-    .card-cta-section h2 em {
-      color: var(--amber);
-      font-style: italic;
-    }
-
-    .card-cta-section p {
-      font-size: 18px;
-      color: rgba(245,240,232,0.65);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .card-cta-btn {
-      display: inline-block;
-      background: var(--amber);
-      color: white;
-      padding: 22px 52px;
-      font-size: 16px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .card-cta-btn:hover {
-      background: #a06d08;
-      transform: translateY(-2px);
-    }
-
-    /* ── STATE PROFILES ── */
-    .profiles-section {
-      background: var(--warm-white);
-      padding: 80px 40px;
-    }
-
-    .profiles-section .section-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 60px;
-    }
-
-    .profiles-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 38px;
-      margin-bottom: 16px;
-    }
-
-    .profiles-section .sub {
-      font-size: 16px;
-      color: var(--mid-brown);
-      line-height: 1.7;
-    }
-
-    .profiles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .state-card {
-      background: var(--cream);
-      padding: 40px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s;
-    }
-
-    .state-card:hover { transform: translateY(-3px); }
-
-    .state-card .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-
-    .state-emoji {
-      font-size: 48px;
-      line-height: 1;
-    }
-
-    .dependency-badge {
-      background: var(--faded-red);
-      color: white;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 6px 12px;
-    }
-
-    .state-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .state-tagline {
-      font-size: 13px;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-bottom: 24px;
-    }
-
-    .state-stats {
-      border-top: 1px solid var(--soft-gray);
-      padding-top: 20px;
-      display: flex;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-
-    .state-stat-item .s-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      color: var(--faded-red);
-      font-weight: 700;
-    }
-
-    .state-stat-item .s-label {
-      font-size: 10px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .state-description {
-      font-size: 14px;
-      line-height: 1.7;
-      color: var(--mid-brown);
-      margin-bottom: 24px;
-    }
-
-    .adopt-btn {
-      width: 100%;
-      background: transparent;
-      border: 1px solid var(--mid-brown);
-      padding: 13px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-      color: var(--brown);
-      transition: all 0.2s;
-    }
-
-    .adopt-btn:hover {
-      background: var(--brown);
-      color: var(--cream);
-    }
-
-    .card-watermark {
-      position: absolute;
-      top: 20px;
-      right: -10px;
-      font-size: 80px;
-      opacity: 0.04;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      pointer-events: none;
-    }
-
-    /* ── CERTIFICATE ── */
-    .certificate-section {
-      padding: 100px 40px;
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .certificate-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      margin-bottom: 16px;
-    }
-
-    .certificate-section .sub {
-      font-size: 16px;
-      color: var(--mid-brown);
-      margin-bottom: 50px;
-      line-height: 1.7;
-    }
-
-    .cert-selector {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .cert-selector select {
-      font-family: 'Source Serif 4', serif;
-      font-size: 14px;
-      padding: 12px 20px;
-      border: 1px solid var(--soft-gray);
-      background: var(--warm-white);
-      color: var(--brown);
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      appearance: none;
-      min-width: 220px;
-    }
-
-    .cert-selector button {
-      background: var(--amber);
-      color: white;
-      border: none;
-      padding: 12px 32px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-    }
-
-    /* Certificate Document */
-    #certificate-output {
-      border: 2px solid var(--soft-gray);
-      background: var(--warm-white);
-      padding: 60px;
-      position: relative;
-      text-align: center;
-      display: none;
-    }
-
-    #certificate-output.visible { display: block; }
-
-    .cert-border-outer {
-      border: 1px solid var(--soft-gray);
-      padding: 40px;
-      position: relative;
-    }
-
-    .cert-corner {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      border-color: var(--amber);
-      border-style: solid;
-    }
-    .cert-corner.tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
-    .cert-corner.tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
-    .cert-corner.bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
-    .cert-corner.br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
-
-    .cert-eyebrow {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 16px;
-    }
-
-    .cert-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      margin-bottom: 24px;
-    }
-
-    .cert-divider {
-      width: 60px;
-      height: 1px;
-      background: var(--amber);
-      margin: 0 auto 24px;
-    }
-
-    .cert-body {
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--mid-brown);
-      max-width: 560px;
-      margin: 0 auto 32px;
-    }
-
-    .cert-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 52px;
-      color: var(--faded-blue);
-      font-weight: 700;
-      margin: 16px 0;
-    }
-
-    .cert-fine-print {
-      font-size: 11px;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-top: 32px;
-      padding-top: 20px;
-      border-top: 1px solid var(--soft-gray);
-    }
-
-    .cert-seal {
-      width: 80px;
-      height: 80px;
-      border: 2px solid var(--amber);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 24px auto 0;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--amber);
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    .cert-actions {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 24px;
-    }
-
-    .cert-actions button {
-      padding: 12px 28px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-    }
-
-    .btn-download {
-      background: var(--brown);
-      color: var(--cream);
-      border: none;
-    }
-
-    .btn-share {
-      background: transparent;
-      border: 1px solid var(--brown);
-      color: var(--brown);
-    }
-
-    /* ── QUOTE BANNER ── */
-    .quote-banner {
-      background: var(--brown);
-      color: var(--cream);
-      padding: 80px 40px;
-      text-align: center;
-    }
-
-    .quote-banner blockquote {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(22px, 3vw, 38px);
-      font-style: italic;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.4;
-    }
-
-    .quote-banner .source {
-      margin-top: 32px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--amber);
-    }
-
-    /* ── INFRA CARDS ── */
-    .infra-section {
-      background: var(--faded-blue);
-      padding: 80px 40px;
-    }
-
-    .infra-section .section-header {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto 50px;
-    }
-
-    .infra-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 38px;
-      color: var(--cream);
-      margin-bottom: 14px;
-    }
-
-    .infra-section .sub {
-      font-size: 15px;
-      color: rgba(245,240,232,0.7);
-      line-height: 1.7;
-    }
-
-    .infra-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .infra-card {
-      background: rgba(245,240,232,0.06);
-      border: 1px solid rgba(245,240,232,0.12);
-      padding: 36px;
-      color: var(--cream);
-    }
-
-    .infra-card .sponsor-label {
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(245,240,232,0.4);
-      margin-bottom: 12px;
-    }
-
-    .infra-card .infra-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    .infra-card .infra-detail {
-      font-size: 13px;
-      color: rgba(245,240,232,0.6);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .infra-card .sponsor-tag {
-      display: inline-block;
-      background: rgba(200,134,10,0.2);
-      border: 1px solid rgba(200,134,10,0.4);
-      color: var(--amber);
-      font-size: 11px;
-      letter-spacing: 1px;
-      padding: 6px 12px;
-    }
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+    .hero-photo-col { height: 100vh; position: relative; overflow: hidden; }
+    .hero-photo-col img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(15%) contrast(1.06); transition: transform 9s ease; }
+    #heroImg { transform: scale(1.0); }
+    .hero-photo-col::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, transparent 50%, var(--bg) 100%), linear-gradient(to top, rgba(7,7,7,0.6) 0%, transparent 30%); }
+    .hero-content { padding: 0 60px 80px 40px; display: flex; flex-direction: column; justify-content: flex-end; height: 100vh; }
+    .hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s 0.3s forwards; }
+    .hero-name { font-family: var(--font-display); font-size: clamp(4.5rem, 8vw, 11rem); font-weight: 300; line-height: 0.88; color: var(--cream); letter-spacing: -0.02em; opacity: 0; animation: fadeUp 1s 0.5s forwards; }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .hero-tagline { margin-top: 36px; max-width: 480px; font-size: 1.25rem; line-height: 1.85; color: var(--text); opacity: 0; animation: fadeUp 0.8s 0.8s forwards; }
+    .hero-tagline strong { color: var(--cream); font-weight: 500; }
+    .hero-tagline strong { color: var(--text); font-weight: 400; }
+    .hero-scroll { margin-top: 52px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0; animation: fadeUp 0.6s 1.1s forwards; }
+    .hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollPulse 2.2s infinite; }
+
+    /* ── SHARED ── */
+    section { padding: 120px 60px; }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 60px; display: flex; align-items: center; gap: 20px; }
+    .section-label::after { content: ''; flex: 0 0 60px; height: 1px; background: var(--gold-dim); }
+
+    /* ── ABOUT ── */
+    #about { border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 4.5vw, 5.5rem); font-weight: 300; line-height: 1.05; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 40px; }
+    .about-headline em { font-style: italic; color: var(--gold); }
+    .about-body { font-size: 1.15rem; color: var(--muted); line-height: 1.9; }
+    .about-body p + p { margin-top: 18px; }
+    .about-body strong { color: var(--text); font-weight: 400; }
+    .about-right { padding-top: 0; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .stat-block { background: var(--surface); padding: 36px 28px; border: 1px solid rgba(201,169,110,0.25); transition: background 0.3s, border-color 0.3s; }
+    .stat-block:hover { background: rgba(201,169,110,0.07); border-color: var(--gold-dim); }
+    .stat-number { font-family: var(--font-display); font-size: 3.5rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 12px; }
+    .stat-label { font-size: 0.88rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text); }
+
+    /* ── PHOTO GRID ── */
+    #photos { border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 380px 300px; }
+    .photo-cell { overflow: hidden; position: relative; cursor: default; -webkit-overflow-scrolling: touch; }
+    .photo-cell img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease, filter 0.5s; filter: grayscale(30%) contrast(1.05); }
+    .photo-cell:hover img { transform: scale(1.06); filter: grayscale(0%) contrast(1.05); }
+    .photo-cell::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,7,7,0.65) 0%, transparent 55%); pointer-events: none; }
+    .photo-caption { position: absolute; bottom: 16px; left: 18px; z-index: 2; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(201,169,110,0.45); transition: color 0.3s; }
+    .photo-cell:hover .photo-caption { color: var(--gold); }
+    /* Featured cell spans 2 cols */
+    .photo-cell.wide { grid-column: span 2; }
+    .photo-cell.tall { grid-row: span 2; }
+
+    /* ── BRANDS ── */
+    #brands { padding: 80px 0; border-top: 1px solid var(--border); }
+    .brands-label { font-size: 0.78rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text); text-align: center; margin-bottom: 44px; }
+    .brands-marquee-wrap { overflow: hidden; position: relative; }
+    .brands-marquee-wrap::before, .brands-marquee-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; }
+    .brands-marquee-wrap::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+    .brands-marquee-wrap::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+    .brands-marquee { display: flex; animation: marquee 30s linear infinite; width: max-content; }
+    .brands-marquee:hover { animation-play-state: paused; }
+    .brand-item { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--text); letter-spacing: 0.1em; padding: 0 44px; white-space: nowrap; transition: color 0.3s; }
+    .brand-item:hover { color: var(--gold); }
+    .brand-sep { color: var(--gold-dim); font-size: 0.6rem; align-self: center; }
+
+    /* ── VENTURES ── */
+    #ventures { border-top: 1px solid var(--border); background: var(--surface); }
+    .ventures-headline { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 6.5rem); font-weight: 300; color: var(--cream); line-height: 1; letter-spacing: -0.01em; margin-bottom: 80px; }
+    .ventures-headline em { font-style: italic; color: var(--gold); }
+    .venture-list { display: flex; flex-direction: column; }
+    .venture-item { display: grid; grid-template-columns: 60px 1fr auto; align-items: start; gap: 40px; padding: 48px 0; border-bottom: 1px solid rgba(201,169,110,0.2); transition: all 0.3s; }
+    .venture-item:hover .venture-name { color: var(--gold); }
+    .venture-item:hover .venture-index { color: var(--gold-dim); }
+    .venture-index { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: rgba(201,169,110,0.3); line-height: 1.2; transition: color 0.3s; }
+    .venture-name { font-family: var(--font-display); font-size: clamp(1.8rem, 2.8vw, 3rem); font-weight: 300; color: var(--cream); letter-spacing: -0.01em; margin-bottom: 16px; transition: color 0.3s; text-decoration: none; display: inline-block; }
+    .venture-name:hover { color: var(--gold); }
+    .venture-name::after { content: ' ↗'; font-size: 0.5em; vertical-align: super; opacity: 0; transition: opacity 0.3s; }
+    .venture-item:hover .venture-name::after { opacity: 1; }
+    .venture-desc { font-size: 1.1rem; color: var(--text); max-width: 560px; line-height: 1.85; }
+    .venture-tag { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,169,110,0.4); padding: 8px 18px; white-space: nowrap; align-self: flex-start; margin-top: 6px; transition: border-color 0.3s, color 0.3s, background 0.3s; }
+    .venture-item:hover .venture-tag { border-color: var(--gold); background: rgba(201,169,110,0.08); }
+
+    /* ── AWARD ── */
+    #award { border-top: 1px solid var(--border); padding: 0; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+    .award-photo { overflow: hidden; position: relative; }
+    .award-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: grayscale(20%) contrast(1.05); transition: transform 0.8s ease; }
+    .award-photo:hover img { transform: scale(1.04); }
+    .award-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(ellipse at 80% 50%, rgba(201,169,110,0.1) 0%, transparent 70%); }
+    .award-pre { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; }
+    .award-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 6.5rem); font-weight: 300; color: var(--cream); line-height: 0.9; letter-spacing: -0.02em; }
+    .award-headline em { font-style: italic; color: var(--gold); }
+    .award-sub { font-size: 1.1rem; color: var(--text); margin-top: 28px; line-height: 1.7; }
+
+    /* ── PRESS ── */
+    #press { border-top: 1px solid var(--border); }
+    /* Inc. hero card */
+    .press-hero {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 2px;
+      background: var(--surface); border: 1px solid var(--border);
+      transition: border-color 0.3s;
+    }
+    .press-hero:hover { border-color: var(--gold-dim); }
+    .press-hero-img { overflow: hidden; height: 520px; }
+    .press-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; transition: transform 0.7s; filter: grayscale(10%); }
+    .press-hero:hover .press-hero-img img { transform: scale(1.04); }
+    .press-hero-content { padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; min-height: 520px; }
+    .press-hero-outlet { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .press-hero-headline { font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 3.2rem); font-weight: 300; color: var(--cream); line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 20px; }
+    .press-hero-headline em { font-style: italic; color: var(--gold); }
+    .press-hero-body { font-size: 1.1rem; color: var(--muted); line-height: 1.85; }
+    /* Grid cards */
+    .press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .press-card { background: var(--surface); border: 1px solid var(--border); padding: 36px 32px; display: flex; flex-direction: column; gap: 14px; transition: background 0.3s, border-color 0.3s, transform 0.3s; text-decoration: none; color: inherit; }
+    .press-card:hover { background: rgba(201,169,110,0.04); border-color: var(--gold-dim); transform: translateY(-4px); }
+    .press-outlet { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .press-headline { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; color: var(--cream); line-height: 1.3; }
+    .press-body { font-size: 1rem; color: var(--muted); line-height: 1.8; flex: 1; }
+
+    /* ── PODCAST ── */
+    #podcast { border-top: 1px solid var(--border); background: var(--surface); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .podcast-headline { font-family: var(--font-display); font-size: clamp(2.5rem, 4.5vw, 5.5rem); font-weight: 300; color: var(--cream); line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 24px; }
+    .podcast-headline em { font-style: italic; color: var(--gold); }
+    .podcast-body { font-size: 1.15rem; color: var(--muted); line-height: 1.9; margin-bottom: 32px; }
+    .podcast-links { display: flex; gap: 12px; flex-wrap: wrap; }
+    .podcast-link { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--border); padding: 10px 20px; text-decoration: none; transition: border-color 0.3s, background 0.3s; }
+    .podcast-link:hover { border-color: var(--gold); background: rgba(201,169,110,0.07); }
+    .video-wrap { display: flex; flex-direction: column; gap: 0; }
+    .video-container { position: relative; width: 100%; aspect-ratio: 9/16; max-height: 520px; background: var(--bg); border: 1px solid var(--border); overflow: hidden; }
+    .video-container iframe { width: 100%; height: 100%; border: none; }
+    .video-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .video-placeholder-bg { position: absolute; inset: 0; background-image: url('images/studio.jpg'); background-size: 280%; background-position: 25% 5%; filter: grayscale(50%) brightness(0.28); }
+    .video-placeholder-content { position: relative; z-index: 1; text-align: center; cursor: pointer; }
+    .play-btn { width: 68px; height: 68px; border: 2px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; transition: background 0.3s, transform 0.2s; }
+    .play-btn:hover { background: rgba(201,169,110,0.2); transform: scale(1.1); }
+    .play-btn svg { fill: var(--gold); width: 24px; height: 24px; margin-left: 5px; }
+    .video-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .video-sublabel { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
+    .youtube-btn { display: flex; align-items: center; gap: 12px; background: rgba(255,0,0,0.08); border: 1px solid rgba(255,0,0,0.25); color: #FF0000; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 18px 28px; transition: background 0.3s, border-color 0.3s; margin-top: 0; }
+    .youtube-btn:hover { background: rgba(255,0,0,0.15); border-color: rgba(255,0,0,0.5); }
+
+    /* ── SPEAKING ── */
+    #speaking { border-top: 1px solid var(--border); }
+    .speaking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .speaking-headline { font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 5rem); font-weight: 300; color: var(--cream); line-height: 1.05; letter-spacing: -0.01em; }
+    .speaking-headline em { font-style: italic; color: var(--gold); }
+    .speaking-body { font-size: 1.1rem; color: var(--muted); line-height: 1.9; margin-top: 24px; }
+    .speaking-list { display: flex; flex-direction: column; }
+    .speaking-item { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.3s; }
+    .speaking-item:hover { padding-left: 6px; }
+    .speaking-item:hover .speaking-event { color: var(--gold); }
+    .speaking-event { font-family: var(--font-display); font-size: 1.35rem; color: var(--cream); transition: color 0.3s; }
+    .speaking-meta { font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-align: right; }
+    .upcoming-badge { display: inline-block; font-family: var(--font-body); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bg); background: var(--gold); padding: 2px 8px; border-radius: 20px; vertical-align: middle; margin-left: 10px; position: relative; top: -2px; }
+
+    /* ── WHAT'S NEXT ── */
+    #next { border-top: 1px solid var(--border); background: var(--surface); }
+    .next-headline { font-family: var(--font-display); font-size: clamp(2.8rem, 5vw, 6.5rem); font-weight: 300; color: var(--cream); line-height: 1; letter-spacing: -0.01em; margin-bottom: 16px; }
+    .next-headline em { font-style: italic; color: var(--gold); }
+    .next-intro { font-size: 1.1rem; color: var(--text); line-height: 1.8; max-width: 540px; margin-bottom: 72px; }
+    .next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .next-card { background: var(--bg); border: 1px solid var(--border); padding: 44px 36px; display: flex; flex-direction: column; gap: 18px; transition: border-color 0.3s, background 0.3s; }
+    .next-card:hover { background: rgba(201,169,110,0.04); border-color: var(--gold-dim); }
+    .next-card-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+    .next-card-title { font-family: var(--font-display); font-size: 1.9rem; font-weight: 300; color: var(--cream); line-height: 1.15; }
+    .next-card-body { font-size: 1rem; color: var(--text); line-height: 1.8; flex: 1; }
+    .next-card-status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-dim); margin-top: 8px; }
+    .next-card-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* ── CONNECT ── */
+    #connect { border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .connect-headline { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 7.5rem); font-weight: 300; color: var(--cream); line-height: 0.92; letter-spacing: -0.02em; }
+    .connect-headline em { font-style: italic; color: var(--gold); }
+    .connect-body { font-size: 1.15rem; color: var(--muted); line-height: 1.9; margin-bottom: 40px; }
+    .connect-links { display: flex; flex-direction: column; }
+    .connect-link { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); font-size: 1.05rem; letter-spacing: 0.04em; transition: all 0.3s; }
+    .connect-link:hover { color: var(--gold); padding-left: 10px; }
+    .connect-link span { color: var(--muted); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--brown);
-      color: rgba(245,240,232,0.5);
-      padding: 60px 40px 40px;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      max-width: 1200px;
-      margin: 0 auto 40px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid rgba(245,240,232,0.1);
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .footer-logo .logo-text {
-      color: var(--cream);
-      font-size: 24px;
-    }
-
-    .footer-logo .logo-sub {
-      color: rgba(245,240,232,0.4);
-      margin-top: 4px;
-    }
-
-    .footer-tagline {
-      font-size: 14px;
-      font-style: italic;
-      color: rgba(245,240,232,0.6);
-      margin-top: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 60px;
-      flex-wrap: wrap;
-    }
-
-    .footer-col h4 {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--amber);
-      margin-bottom: 16px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .footer-col ul a {
-      font-size: 13px;
-      color: rgba(245,240,232,0.5);
-      text-decoration: none;
-    }
-
-    .footer-col ul a:hover { color: var(--cream); }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-disclaimer {
-      font-size: 11px;
-      line-height: 1.6;
-      max-width: 600px;
-    }
-
-    .footer-disclaimer em {
-      color: var(--amber);
-      font-style: normal;
-    }
-
-    /* ── MODAL / OVERLAY ── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(30,18,8,0.7);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.open { display: flex; }
-
-    .modal {
-      background: var(--warm-white);
-      max-width: 520px;
-      width: 100%;
-      padding: 50px;
-      position: relative;
-      text-align: center;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 20px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: var(--mid-brown);
-    }
-
-    .modal h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .modal .state-flag {
-      font-size: 64px;
-      margin-bottom: 16px;
-    }
-
-    .modal p {
-      font-size: 15px;
-      color: var(--mid-brown);
-      line-height: 1.7;
-      margin-bottom: 16px;
-    }
-
-    .modal .modal-cta {
-      background: var(--amber);
-      color: white;
-      border: none;
-      padding: 14px 32px;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      font-family: 'Source Serif 4', serif;
-      margin-top: 12px;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .hero { flex-direction: column; min-height: auto; }
-      .hero-content { padding: 60px 24px 40px; }
-      .hero h1 { font-size: 40px; }
-      .hero p { font-size: 17px; line-height: 1.65; margin-bottom: 28px; }
-      .hero-stat-bar { position: static; gap: 16px; flex-wrap: wrap; padding: 24px 16px; }
-      .hero-stat { flex: 1 1 44%; }
-      .hero-stat .num { font-size: 24px; }
-      .hero-stat .label { font-size: 11px; letter-spacing: 1px; }
-      nav .nav-links { display: none; }
-      .intro { margin: 60px auto; padding: 0 24px; }
-      .intro h2 { font-size: 28px; }
-      .intro p { font-size: 16px; }
-      .card-cta-section { padding: 70px 24px; }
-      .card-cta-section h2 { font-size: 32px; }
-      .card-cta-section p { font-size: 16px; }
-      .card-cta-btn { padding: 18px 36px; font-size: 14px; }
-      .profiles-section { padding: 60px 20px; }
-      .profiles-grid { grid-template-columns: 1fr; }
-      .certificate-section { padding: 60px 24px; }
-      #certificate-output { padding: 30px 20px; }
-      .cert-border-outer { padding: 20px; }
-      .quote-banner blockquote { font-size: 24px; }
-      .infra-section { padding: 60px 20px; }
-      .infra-card .infra-name { font-size: 17px; }
-      .infra-card .infra-detail { font-size: 14px; }
-      .footer-links { gap: 32px; }
-      .footer-top { flex-direction: column; }
-    }
+    footer { border-top: 1px solid var(--border); padding: 36px 60px; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo { font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+    .footer-copy { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.08em; }
 
     /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
 
-    .hero-content > * {
-      animation: fadeUp 0.8s ease both;
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      html, body { max-width: 100%; overflow-x: hidden; }
+      nav { padding: 20px 20px; } nav.scrolled { padding: 14px 20px; } .nav-links { display: none; }
+      section { padding: 64px 20px; }
+      #hero { grid-template-columns: 1fr; } .hero-photo-col { height: 65vh; } .hero-content { padding: 32px 20px 56px; height: auto; }
+      .hero-tagline { font-size: 1rem; max-width: 100%; }
+      #about { grid-template-columns: 1fr; gap: 40px; } .about-right { padding-top: 0; }
+      .about-headline { font-size: 2.4rem; }
+      #photos { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } .photo-cell { height: 180px; } .photo-cell.wide { grid-column: span 2; } .photo-cell.tall { grid-row: span 1; }
+      #ventures { padding: 64px 20px; }
+      .ventures-headline { font-size: 2.8rem; margin-bottom: 48px; }
+      .venture-item { display: flex; flex-direction: column; gap: 12px; padding: 36px 0; }
+      .venture-index { display: none; }
+      .venture-name { font-size: 1.8rem; }
+      .venture-desc { font-size: 0.95rem; max-width: 100%; }
+      .venture-tag { align-self: flex-start; }
+      .press-hero { grid-template-columns: 1fr; } .press-hero-img { height: 260px; } .press-hero-content { padding: 32px 24px; }
+      .press-grid { grid-template-columns: 1fr; }
+      #podcast { grid-template-columns: 1fr; gap: 40px; }
+      .video-container { aspect-ratio: 16/9; max-height: none; }
+      .speaking-grid { grid-template-columns: 1fr; gap: 40px; }
+      .speaking-event { font-size: 1rem; }
+      #connect { grid-template-columns: 1fr; gap: 40px; }
+      .connect-headline { font-size: 3.5rem; }
+      #award { grid-template-columns: 1fr; padding: 0; } .award-photo { height: 320px; } .award-content { padding: 48px 20px; } .award-headline { font-size: 3rem; }
+      .next-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
     }
-    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-    .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-    .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
-    .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
   </style>
 </head>
 <body>
 
-<!-- TOP BANNER -->
-<div class="top-banner">
-  You already donated. We just wanted you to know. 🫶
-</div>
+  <nav id="navbar">
+    <a class="nav-logo" href="#">Martin Ekechukwu</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#press">Press</a></li>
+      <li><a href="#next">What's Next</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+  </nav>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">
-    <span class="logo-heart">🫶</span>
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-photo-col">
+      <img src="images/headshot.png" alt="Martin Ekechukwu" id="heroImg" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Founder · Strategist · Builder</p>
+      <h1 class="hero-name">Martin<br><em>Ekechukwu</em></h1>
+      <p class="hero-tagline"><strong>Brand strategist, founder, and cultural architect</strong> operating at the intersection of AI, media, and human connection.</p>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
     <div>
-      <span class="logo-text">Adopt-A-State</span>
-      <span class="logo-sub">A Taxpayer Awareness Initiative</span>
+      <div class="section-label">About</div>
+      <h2 class="about-headline reveal">Two continents.<br>One <em>trajectory.</em></h2>
+      <div class="about-body reveal reveal-delay-2">
+        <p>Born between Nigeria and the Czech Republic, Martin Ekechukwu built a career at the intersection of culture, commerce, and conviction. From a high jump track at the <strong>University of Arkansas</strong> to shaping brand strategy at the highest levels of CPG, entertainment, and tech — the path has always moved forward.</p>
+        <p>After an MBA from <strong>Duke's Fuqua School of Business</strong> and formative years at Toyota, Bacardi, and Pernod Ricard, Martin pivoted to building. Village Tea Company. WHTWRKS. A-Frame Brands. FullScale Holdings. Each venture a distinct expression of the same instinct: <strong>find where culture and commerce collide, then build something durable there.</strong></p>
+        <p>Media runs deep. WHTWRKS was born <strong>inside ViacomCBS</strong> — shaped by the infrastructure, the relationships, and the creative muscle of one of the most powerful media companies on the planet. That foundation informed everything: how Martin thinks about distribution, audience, and the machinery behind culture. <strong>A technical founder</strong> who moves between boardrooms and build cycles.</p>
+        <p>Today he's focused on FullScale — an AI-powered media infrastructure company for the creator economy — while continuing to mentor, speak, and co-host <strong>The Quiet Truth Podcast</strong> with author Enitan Bereola.</p>
+      </div>
+    </div>
+    <div class="about-right reveal reveal-delay-3">
+      <div class="stat-grid">
+        <div class="stat-block"><div class="stat-number">20+</div><div class="stat-label">Years in Brand Strategy</div></div>
+        <div class="stat-block"><div class="stat-number">$30M</div><div class="stat-label">Capital Raised Across Ventures</div></div>
+        <div class="stat-block"><div class="stat-number">14</div><div class="stat-label">Brands Launched & Scaled</div></div>
+        <div class="stat-block"><div class="stat-number">∞</div><div class="stat-label">Raised in Media. Built for What's Next.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHOTO GRID ── -->
+  <div id="photos">
+    <!-- Row 1 -->
+    <div class="photo-cell wide">
+      <img src="images/theater.jpg" alt="Martin Ekechukwu" style="object-position: center 75%;" />
+      <div class="photo-caption">On reflection</div>
+    </div>
+    <div class="photo-cell">
+      <img src="images/inthedetails.jpg" alt="Martin Ekechukwu" style="object-position: center 20%;" />
+      <div class="photo-caption">In the details</div>
+    </div>
+    <div class="photo-cell" style="cursor:pointer;" onclick="playMosaicVideo(this)">
+      <img src="images/hot97_thumb.jpg" alt="Hot 97" style="width:100%;height:100%;object-fit:cover;object-position:center top;" class="mosaic-thumb" />
+      <video muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:none;position:absolute;top:0;left:0;" data-src="images/hot97_video.mp4">
+        <source src="images/hot97_video.mp4" type="video/mp4" />
+      </video>
+      <div class="photo-caption">Hot 97</div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;pointer-events:none;" class="play-overlay">
+        <div style="width:52px;height:52px;border:2px solid rgba(201,169,110,0.85);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(7,7,7,0.45);backdrop-filter:blur(4px);">
+          <svg viewBox="0 0 24 24" style="fill:#C9A96E;width:20px;height:20px;margin-left:3px;"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="photo-cell">
+      <img src="images/jed.jpg" alt="Martin at Black Ambition" style="object-position: center 20%;" />
+      <div class="photo-caption">Black Ambition</div>
+    </div>
+    <div class="photo-cell">
+      <img src="images/fire_event.jpg" alt="Brand Like a Boss: Storytelling Secrets — McDermott Concert Hall" style="object-position: 28% 53%; transform: scale(2.2); transform-origin: 28% 53%;" />
+      <div class="photo-caption">After dark</div>
+    </div>
+    <div class="photo-cell wide">
+      <img src="images/community.jpg" alt="Community" style="object-position: center 65%; transform: scale(1.15); transform-origin: center 65%;" />
+      <div class="photo-caption">Community</div>
     </div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#">Our Mission</a></li>
-    <li><a href="#">The States</a></li>
-    <li><a href="#">The Data</a></li>
-    <li><a href="#">Certificate</a></li>
-  </ul>
-  <a href="card-generator.html"><button class="nav-cta">Make Your Card &rarr;</button></a>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">A Message of Gratitude</p>
-    <h1>You've been<br>giving all along.<br><em>Thank you.</em></h1>
-    <p>For years, taxpayers in blue states have quietly contributed billions more than they've received. No ribbon-cutting. No press release. Just roads. Schools. Hospitals. Quietly keeping America afloat.</p>
-    <p style="font-family:'Playfair Display',serif;font-size:clamp(22px,3vw,26px);color:var(--amber);font-style:italic;margin-bottom:32px;line-height:1.3;">Make Your Own Appreciation Card.<br>Since They Won't Do It for You.</p>
-    <div class="hero-actions">
-      <a href="card-generator.html" class="btn-primary" style="text-decoration:none;">Make Your Card &rarr;</a>
-      <button class="btn-ghost" onclick="document.getElementById('profiles').scrollIntoView({behavior:'smooth'})">Meet the States →</button>
-    </div>
-  </div>
-  <div class="hero-stat-bar">
-    <div class="hero-stat">
-      <div class="num">$13.7B</div>
-      <div class="label">California's Net Contribution</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">$2.13</div>
-      <div class="label">Mississippi Receives per $1 Sent</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">34</div>
-      <div class="label">States Receiving More Than They Give</div>
-    </div>
-    <div class="hero-stat">
-      <div class="num">$0</div>
-      <div class="label">Thank You Notes Received</div>
-    </div>
-  </div>
-</section>
-
-<!-- INTRO -->
-<section class="intro">
-  <p class="section-label">About This Initiative</p>
-  <h2>Some states could not do it without you. They never could.</h2>
-  <p>Every year, the federal government collects taxes and redistributes them across all 50 states. And every year, a handful of states put in more than they take out. The others... let's just say they appreciate the generosity. Even if they don't always say so.</p>
-  <p>Adopt-A-State is a taxpayer awareness initiative dedicated to helping the donors of this great nation understand the full scope of their quiet, involuntary philanthropy.</p>
-  <p class="attribution">All data sourced from the Rockefeller Institute of Government, Tax Foundation, and USASpending.gov. This is real. All of it.</p>
-</section>
-
-<!-- CARD CTA -->
-<section class="card-cta-section">
-  <div class="card-cta-inner">
-    <p class="section-label" style="color:var(--amber);">Show Your Appreciation</p>
-    <h2>Make Your Own Appreciation Card.<br><em>Since They Won't Do It for You.</em></h2>
-    <p>Upload your photo, pick your state, and generate a shareable card that says what they never will: thank you.</p>
-    <a href="card-generator.html" class="card-cta-btn">Make Your Card &rarr;</a>
-  </div>
-</section>
-
-<!-- STATE PROFILES -->
-<section class="profiles-section" id="profiles">
-  <div class="section-header">
-    <p class="section-label">Meet Your Beneficiaries</p>
-    <h2>States in Need</h2>
-    <p class="sub">These states are doing their best. With your help, they are managing. Please continue your support.</p>
-  </div>
-  <div class="profiles-grid">
-
-    <div class="state-card">
-      <div class="card-watermark">MS</div>
-      <div class="card-top">
-        <span class="state-emoji">🌊</span>
-        <span class="dependency-badge">High Dependency</span>
-      </div>
-      <div class="state-name">Mississippi</div>
-      <div class="state-tagline">"America's Most Beloved Beneficiary"</div>
-      <div class="state-stats">
-        <div class="state-stat-item">
-          <div class="s-num">$2.13</div>
-          <div class="s-label">per $1 given</div>
-        </div>
-        <div class="state-stat-item">
-          <div class="s-num">$4.1B</div>
-          <div class="s-label">net received (2023)</div>
-        </div>
-      </div>
-      <p class="state-description">Mississippi has been receiving more than it contributes for decades. With your continued support, its roads remain passable, its schools remain open, and its bridges remain... largely intact.</p>
-      <button class="adopt-btn" onclick="openModal('Mississippi', '🌊', '$4.1 billion', 'Mississippi has been part of the Adopt-A-State program since its founding. Thanks to donors like you, it continues to function.')">
-        You Already Adopted Mississippi
-      </button>
-    </div>
-
-    <div class="state-card">
-      <div class="card-watermark">KY</div>
-      <div class="card-top">
-        <span class="state-emoji">🐎</span>
-        <span class="dependency-badge">High Dependency</span>
-      </div>
-      <div class="state-name">Kentucky</div>
-      <div class="state-tagline">"Bootstraps Not Included"</div>
-      <div class="state-stats">
-        <div class="state-stat-item">
-          <div class="s-num">$2.41</div>
-          <div class="s-label">per $1 given</div>
-        </div>
-        <div class="state-stat-item">
-          <div class="s-num">$22.9B</div>
-          <div class="s-label">net received (2023)</div>
-        </div>
-      </div>
-      <p class="state-description">Kentucky receives the most federal aid per capita of any state. It has strong opinions about government spending. It would like you to know that these two facts are unrelated.</p>
-      <button class="adopt-btn" onclick="openModal('Kentucky', '🐎', '$22.9 billion', 'Kentucky has proudly participated in the federal redistribution program since the New Deal. It remains deeply committed to fiscal independence, in theory.')">
-        You Already Adopted Kentucky
-      </button>
-    </div>
-
-    <div class="state-card">
-      <div class="card-watermark">WV</div>
-      <div class="card-top">
-        <span class="state-emoji">⛰️</span>
-        <span class="dependency-badge">Critical Dependency</span>
-      </div>
-      <div class="state-name">West Virginia</div>
-      <div class="state-tagline">"Almost Heaven, Fully Funded"</div>
-      <div class="state-stats">
-        <div class="state-stat-item">
-          <div class="s-num">$2.07</div>
-          <div class="s-label">per $1 given</div>
-        </div>
-        <div class="state-stat-item">
-          <div class="s-num">$6.5B</div>
-          <div class="s-label">net received (2023)</div>
-        </div>
-      </div>
-      <p class="state-description">West Virginia's mountain roads, rural hospitals, and aging infrastructure are maintained in part thanks to the generous, involuntary contributions of New York, New Jersey, and California taxpayers. Always has been.</p>
-      <button class="adopt-btn" onclick="openModal('West Virginia', '⛰️', '$6.5 billion', 'West Virginia is a beautiful state with a complex relationship to federal funding. We are grateful it allows us to help.')">
-        You Already Adopted West Virginia
-      </button>
-    </div>
-
-    <div class="state-card">
-      <div class="card-watermark">AL</div>
-      <div class="card-top">
-        <span class="state-emoji">🌺</span>
-        <span class="dependency-badge">High Dependency</span>
-      </div>
-      <div class="state-name">Alabama</div>
-      <div class="state-tagline">"Roll Tide. Cash Flows."</div>
-      <div class="state-stats">
-        <div class="state-stat-item">
-          <div class="s-num">$1.99</div>
-          <div class="s-label">per $1 given</div>
-        </div>
-        <div class="state-stat-item">
-          <div class="s-num">$10.2B</div>
-          <div class="s-label">net received (2023)</div>
-        </div>
-      </div>
-      <p class="state-description">Alabama is a proud, independent state that receives nearly twice what it contributes to the federal system. It has strong feelings about self-reliance. Your taxes helped pave I-65. You're welcome.</p>
-      <button class="adopt-btn" onclick="openModal('Alabama', '🌺', '$10.2 billion', 'Alabama deeply values independence. It simply values your tax dollars slightly more.')">
-        You Already Adopted Alabama
-      </button>
-    </div>
-
-    <div class="state-card">
-      <div class="card-watermark">SC</div>
-      <div class="card-top">
-        <span class="state-emoji">🌴</span>
-        <span class="dependency-badge">High Dependency</span>
-      </div>
-      <div class="state-name">South Carolina</div>
-      <div class="state-tagline">"Smiling Faces. Balanced by Others."</div>
-      <div class="state-stats">
-        <div class="state-stat-item">
-          <div class="s-num">$1.71</div>
-          <div class="s-label">per $1 given</div>
-        </div>
-        <div class="state-stat-item">
-          <div class="s-num">$7.9B</div>
-          <div class="s-label">net received (2023)</div>
-        </div>
-      </div>
-      <p class="state-description">South Carolina has beautiful beaches and deeply held convictions about small government. Its Medicaid program, military bases, and federal highway funding are deeply grateful for the ongoing arrangement.</p>
-      <button class="adopt-btn" onclick="openModal('South Carolina', '🌴', '$7.9 billion', 'South Carolina believes in pulling itself up by its bootstraps. The bootstraps were federally subsidized.')">
-        You Already Adopted South Carolina
-      </button>
-    </div>
-
-    <div class="state-card">
-      <div class="card-watermark">AK</div>
-      <div class="card-top">
-        <span class="state-emoji">🐻</span>
-        <span class="dependency-badge">Critical Dependency</span>
-      </div>
-      <div class="state-name">Alaska</div>
-      <div class="state-tagline">"Frontier Spirit. Federal Funding."</div>
-      <div class="state-stats">
-        <div class="state-stat-item">
-          <div class="s-num">$1.84</div>
-          <div class="s-label">per $1 given</div>
-        </div>
-        <div class="state-stat-item">
-          <div class="s-num">$5.1B</div>
-          <div class="s-label">net received (2023)</div>
-        </div>
-      </div>
-      <p class="state-description">Alaska receives more federal money per capita than almost any state in the union. It also pays its residents a dividend to live there. Both of these things coexist peacefully, apparently.</p>
-      <button class="adopt-btn" onclick="openModal('Alaska', '🐻', '$5.1 billion', 'Alaska values rugged individualism and has operationalized that value through robust federal subsidy collection.')">
-        You Already Adopted Alaska
-      </button>
-    </div>
-
-  </div>
-</section>
-
-<!-- QUOTE BANNER -->
-<div class="quote-banner">
-  <blockquote>"The beauty of Adopt-A-State is that you never had a choice. But you can still feel good about it."</blockquote>
-  <p class="source">Adopt-A-State Founder &bull; Unpaid, Like Most of This</p>
-</div>
-
-<!-- CERTIFICATE SECTION -->
-<section class="certificate-section" id="cert-section">
-  <p class="section-label">Your Official Documentation</p>
-  <h2>Claim Your Certificate of Generosity</h2>
-  <p class="sub">You've been contributing all along. The least we can do is give you a piece of paper about it. Select your state and we'll generate your official certificate of involuntary philanthropy.</p>
-
-  <div class="cert-selector">
-    <select id="donor-state">
-      <option value="">Select Your Home State</option>
-      <option value="California|$13.7 billion|California">🌴 California</option>
-      <option value="New York|$22.5 billion|New York">🗽 New York</option>
-      <option value="New Jersey|$9.6 billion|New Jersey">🏙️ New Jersey</option>
-      <option value="Massachusetts|$7.2 billion|Massachusetts">🦞 Massachusetts</option>
-      <option value="Illinois|$5.5 billion|Illinois">🌆 Illinois</option>
-      <option value="Washington|$4.8 billion|Washington">🌲 Washington</option>
-      <option value="Colorado|$3.1 billion|Colorado">🏔️ Colorado</option>
-      <option value="Minnesota|$2.4 billion|Minnesota">🌨️ Minnesota</option>
-    </select>
-    <button onclick="generateCert()">Generate My Certificate</button>
-  </div>
-
-  <div id="certificate-output">
-    <div class="cert-border-outer">
-      <div class="cert-corner tl"></div>
-      <div class="cert-corner tr"></div>
-      <div class="cert-corner bl"></div>
-      <div class="cert-corner br"></div>
-
-      <p class="cert-eyebrow">Official Certificate of Involuntary Generosity</p>
-      <h2 class="cert-title">Certificate of Generosity</h2>
-      <div class="cert-divider"></div>
-
-      <div class="cert-body">
-        <p>This document certifies that the taxpayers of</p>
-        <p><strong style="font-family:'Playfair Display',serif;font-size:22px;" id="cert-state-name">[State]</strong></p>
-        <p>contributed approximately</p>
-        <div class="cert-amount" id="cert-amount-display">$0</div>
-        <p>more to the federal government than they received in FY 2023.<br>A portion of this surplus funded roads, schools, hospitals, and various infrastructure projects in states that could not cover their own costs.</p>
-      </div>
-
-      <p class="cert-fine-print">
-        Issued by the Adopt-A-State Taxpayer Awareness Initiative &bull; Data sourced from the Rockefeller Institute of Government &bull; 
-        No actual thankyou was issued by any recipient state or its representatives. This certificate is the thank you.
-      </p>
-
-      <div class="cert-seal">
-        Thank<br>You<br>For<br>Your<br>Service
-      </div>
-    </div>
-
-    <div class="cert-actions">
-      <button class="btn-download">📄 Download Certificate</button>
-      <button class="btn-share">🔗 Share on X</button>
-    </div>
-  </div>
-</section>
-
-<!-- INFRA CARDS -->
-<section class="infra-section">
-  <div class="section-header">
-    <p class="section-label" style="color:rgba(200,134,10,0.8)">Brought To You By</p>
-    <h2>Sponsored Infrastructure</h2>
-    <p class="sub">Real projects. Real federal dollars. Real states that did not write a thank you note.</p>
-  </div>
-  <div class="infra-grid">
-    <div class="infra-card">
-      <p class="sponsor-label">Sponsored By</p>
-      <p class="infra-name">Interstate 65 Expansion<br>Louisville, KY</p>
-      <p class="infra-detail">22 miles of highway resurfacing and bridge reinforcement. Funded in part through federal transportation grants redistributed from net contributor states.</p>
-      <span class="sponsor-tag">New York Taxpayers 🧡</span>
-    </div>
-    <div class="infra-card">
-      <p class="sponsor-label">Sponsored By</p>
-      <p class="infra-name">Medicaid Coverage<br>Jackson, MS</p>
-      <p class="infra-detail">Mississippi's federal Medicaid match rate is 77%, meaning the federal government covers $0.77 of every dollar spent. That federal government is funded by you.</p>
-      <span class="sponsor-tag">California Taxpayers 🧡</span>
-    </div>
-    <div class="infra-card">
-      <p class="sponsor-label">Sponsored By</p>
-      <p class="infra-name">Rural Broadband Initiative<br>Morgantown, WV</p>
-      <p class="infra-detail">$340M in federal broadband expansion funding allocated to West Virginia, a state that receives $2.07 for every dollar it sends to Washington.</p>
-      <span class="sponsor-tag">New Jersey Taxpayers 🧡</span>
-    </div>
-    <div class="infra-card">
-      <p class="sponsor-label">Sponsored By</p>
-      <p class="infra-name">Fort Rucker Military Base<br>Enterprise, AL</p>
-      <p class="infra-detail">One of Alabama's 21 military installations, collectively injecting $15.6B annually into the state's economy via federal defense spending. Fiscal conservatism, applied selectively.</p>
-      <span class="sponsor-tag">Illinois Taxpayers 🧡</span>
-    </div>
-    <div class="infra-card">
-      <p class="sponsor-label">Sponsored By</p>
-      <p class="infra-name">FEMA Hurricane Relief<br>Charleston, SC</p>
-      <p class="infra-detail">South Carolina received $2.3B in federal disaster relief between 2017-2023. FEMA does not charge co-pays. You absorb the difference. You're doing great.</p>
-      <span class="sponsor-tag">Massachusetts Taxpayers 🧡</span>
-    </div>
-    <div class="infra-card">
-      <p class="sponsor-label">Sponsored By</p>
-      <p class="infra-name">Permanent Fund Dividend<br>Juneau, AK</p>
-      <p class="infra-detail">Alaska pays residents up to $3,284/year simply for living there, funded in part by oil revenues and substantial federal transfers. The frontier provides for itself. Mostly.</p>
-      <span class="sponsor-tag">Colorado Taxpayers 🧡</span>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-logo">
-      <div class="logo">
-        <span class="logo-heart">🫶</span>
-        <div>
-          <span class="logo-text">Adopt-A-State</span>
-          <span class="logo-sub">A Taxpayer Awareness Initiative</span>
-        </div>
-      </div>
-      <p class="footer-tagline">They can't do it alone.<br>They never could.</p>
-    </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#">The States</a></li>
-          <li><a href="#">The Data</a></li>
-          <li><a href="#">Sponsored Infrastructure</a></li>
-          <li><a href="#">Certificate Generator</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Share</h4>
-        <ul>
-          <li><a href="#">Share on X</a></li>
-          <li><a href="#">Share on Instagram</a></li>
-          <li><a href="#">Download Assets</a></li>
-          <li><a href="#">Press Kit</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Data Sources</h4>
-        <ul>
-          <li><a href="#">Rockefeller Institute</a></li>
-          <li><a href="#">Tax Foundation</a></li>
-          <li><a href="#">USASpending.gov</a></li>
-          <li><a href="#">Methodology</a></li>
-        </ul>
+  <!-- ── BRANDS ── -->
+  <div id="brands">
+    <p class="brands-label">Selected collaborations &amp; partnerships</p>
+    <div class="brands-marquee-wrap">
+      <div class="brands-marquee">
+        <span class="brand-item">Nike</span><span class="brand-sep">·</span>
+        <span class="brand-item">Meta</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pepsi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Moët Hennessy</span><span class="brand-sep">·</span>
+        <span class="brand-item">Def Jam</span><span class="brand-sep">·</span>
+        <span class="brand-item">Janet Jackson</span><span class="brand-sep">·</span>
+        <span class="brand-item">Nas</span><span class="brand-sep">·</span>
+        <span class="brand-item">Naomi Osaka</span><span class="brand-sep">·</span>
+        <span class="brand-item">Gabrielle Union</span><span class="brand-sep">·</span>
+        <span class="brand-item">Dwyane Wade</span><span class="brand-sep">·</span>
+        <span class="brand-item">John Legend</span><span class="brand-sep">·</span>
+        <span class="brand-item">Bacardi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pernod Ricard</span><span class="brand-sep">·</span>
+        <span class="brand-item">Nike</span><span class="brand-sep">·</span>
+        <span class="brand-item">Meta</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pepsi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Moët Hennessy</span><span class="brand-sep">·</span>
+        <span class="brand-item">Def Jam</span><span class="brand-sep">·</span>
+        <span class="brand-item">Janet Jackson</span><span class="brand-sep">·</span>
+        <span class="brand-item">Nas</span><span class="brand-sep">·</span>
+        <span class="brand-item">Naomi Osaka</span><span class="brand-sep">·</span>
+        <span class="brand-item">Gabrielle Union</span><span class="brand-sep">·</span>
+        <span class="brand-item">Dwyane Wade</span><span class="brand-sep">·</span>
+        <span class="brand-item">John Legend</span><span class="brand-sep">·</span>
+        <span class="brand-item">Bacardi</span><span class="brand-sep">·</span>
+        <span class="brand-item">Pernod Ricard</span><span class="brand-sep">·</span>
       </div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-disclaimer">
-      <em>Adopt-A-State</em> is a political satire and taxpayer awareness project. All financial figures are sourced from publicly available federal data. 
-      No state was harmed in the making of this website. Several may be embarrassed. That's different.
-      Not affiliated with any political party, candidate, or actual charity. Do not send us money. You've given enough.
-    </p>
-    <p style="font-size:12px;">© 2025 Adopt-A-State Initiative</p>
+
+  <!-- ── VENTURES ── -->
+  <section id="ventures">
+    <div class="section-label reveal">Ventures</div>
+    <h2 class="ventures-headline reveal">Built from<br><em>conviction.</em></h2>
+    <div class="venture-list">
+      <div class="venture-item reveal">
+        <div class="venture-index">01</div>
+        <div><a href="https://gofullscale.co" target="_blank" rel="noopener" class="venture-name">FullScale Holdings</a><div class="venture-desc">AI-powered media infrastructure for the creator economy. Martin's current primary venture sits at the convergence of artificial intelligence, advertising technology, and the next generation of content monetization.</div></div>
+        <div class="venture-tag">Current · AI &amp; Media</div>
+      </div>
+      <div class="venture-item reveal reveal-delay-1">
+        <div class="venture-index">02</div>
+        <div><a href="https://whtwrks.com" target="_blank" rel="noopener" class="venture-name">WHTWRKS</a><div class="venture-desc">Co-founded with music industry veteran Jeffrey Burroughs and global brand leader, music veteran and consultant Tamara Spinner. A marketing agency and cultural consultancy connecting brands to diverse audiences through music and entertainment — including a debut Hennessy × Nas collaboration that ran for seven consecutive years.</div></div>
+        <div class="venture-tag">2011 – Present</div>
+      </div>
+      <div class="venture-item reveal reveal-delay-2">
+        <div class="venture-index">03</div>
+        <div><a href="https://aframebrands.com" target="_blank" rel="noopener" class="venture-name">A-Frame Brands</a><div class="venture-desc">As Chief Strategy Officer, led brand, creative, corporate, sales, and partnership strategy across a portfolio of talent-led personal care brands — Kinlò (Naomi Osaka), Proudly (Gabrielle Union &amp; Dwyane Wade), and Loved01 (John Legend). Raised $11.2M from Forerunner Ventures and Initialized Capital.</div></div>
+        <div class="venture-tag">CSO · $11.2M Raised</div>
+      </div>
+      <div class="venture-item reveal reveal-delay-3">
+        <div class="venture-index">04</div>
+        <div><a href="https://www.prnewswire.com/news-releases/affinity-beverage-group-inc-announces-the-acquisition-of-tea-company-300175850.html" target="_blank" rel="noopener" class="venture-name">Village Tea Company</a><div class="venture-desc">A personal story turned CPG venture — growing from $69K in year-one revenue to $750K by 2012, and landing shelf space at Whole Foods, Vitamin Shoppe, and Amazon. Sparked by a grandmother's loose-leaf ritual in the Czech Republic. Successfully exited to Affinity Brands Group.</div></div>
+        <div class="venture-tag">2009 · Exited to Affinity Brands</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AWARD ── -->
+  <div id="award">
+    <div class="award-photo">
+      <img src="images/black_ambition.jpg" alt="Black Ambition Prize Winners with Pharrell Williams" />
+    </div>
+    <div class="award-content">
+      <div class="award-pre reveal">Recognition</div>
+      <h2 class="award-headline reveal reveal-delay-1">Black Ambition<br><em>Prize Winner</em></h2>
+      <p class="award-sub reveal reveal-delay-2">Pharrell Williams' entrepreneurship competition honoring founders reshaping the future. Martin was selected alongside a cohort of the country's most compelling Black and Hispanic entrepreneurs.</p>
+    </div>
   </div>
-</footer>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="state-flag" id="modal-flag">🌊</div>
-    <h3 id="modal-title">Mississippi</h3>
-    <p id="modal-amount" style="font-family:'Playfair Display',serif;font-size:22px;color:#b84040;margin:8px 0 16px;"></p>
-    <p id="modal-body"></p>
-    <p style="font-size:13px;color:#8a7a6a;font-style:italic;margin-top:16px;">
-      You did not opt into this. You did not have to. And yet, here we are. Together. Whether you like it or not.
-    </p>
-    <button class="modal-cta" onclick="closeModal()">Thank You For Your Service</button>
-  </div>
-</div>
+  <!-- ── PRESS ── -->
+  <section id="press">
+    <div class="section-label reveal">Press</div>
 
-<script>
-  function openModal(name, flag, amount, body) {
-    document.getElementById('modal-flag').textContent = flag;
-    document.getElementById('modal-title').textContent = name;
-    document.getElementById('modal-amount').textContent = 'Net Federal Receipt: ' + amount;
-    document.getElementById('modal-body').textContent = body;
-    document.getElementById('modal').classList.add('open');
-  }
+    <!-- Inc. Magazine Hero Feature -->
+    <div class="press-hero reveal">
+      <div class="press-hero-img">
+        <img src="images/inc_magazine.jpg" alt="Inc. Magazine — Martin Ekechukwu" />
+      </div>
+      <div class="press-hero-content">
+        <div class="press-hero-outlet">Inc. Magazine — May / June 2023</div>
+        <h3 class="press-hero-headline">"You love our culture.<br>You love our music.<br><em>Do you really love us?"</em></h3>
+        <p class="press-hero-body">A feature on Martin and WHTWRKS — and the pivotal moment when PepsiCo called during the summer of 2020 asking for help telling the real story. A candid, magazine-length examination of what it actually means for brands to show up for the communities they profit from.</p>
+      </div>
+    </div>
 
-  function closeModal() {
-    document.getElementById('modal').classList.remove('open');
-  }
+    <div class="press-grid" style="margin-top: 2px;">
+      <a href="https://www.adweek.com/brand-marketing/ceo-on-building-a-brand-portfolio-for-founders-of-color/" target="_blank" rel="noopener" class="press-card reveal"><div class="press-outlet">Adweek</div><div class="press-headline">CSO Martin Ekechukwu & Founders of Color at A-Frame Brands</div><div class="press-body">Featured for scaling talent-led personal care brands for underserved markets, building equity for founders of color through the A-Frame portfolio.</div></a>
+      <a href="https://www.campaignlive.com/article/close-up-whtwrks-ceo-martin-ekechukwu/1821543" target="_blank" rel="noopener" class="press-card reveal reveal-delay-1"><div class="press-outlet">Campaign US</div><div class="press-headline">Close-Up: WHTWRKS CEO Martin Ekechukwu</div><div class="press-body">A profile on building a cultural consultancy connecting brands to diverse audiences through music, entertainment, and authentic storytelling.</div></a>
+      <a href="https://www.blackenterprise.com/marketing-strategist-sees-purpose-in-helping-others/" target="_blank" rel="noopener" class="press-card reveal reveal-delay-2"><div class="press-outlet">Black Enterprise</div><div class="press-headline">Marketing Strategist Sees Purpose in Helping Others</div><div class="press-body">Two features spanning the Village Tea retail journey and a philosophy of purposeful brand-building — using business as a vehicle for community impact.</div></a>
+      <a href="https://shoppeblack.us/2022/03/a-frame-brands-secures-11-2-million/" target="_blank" rel="noopener" class="press-card reveal reveal-delay-3"><div class="press-outlet">Shoppe Black</div><div class="press-headline">A-Frame Brands Secures $11M from Forerunner &amp; Initialized</div><div class="press-body">Coverage of the landmark raise for talent-led personal care brands serving underrepresented consumers.</div></a>
+      <a href="https://www.inc.com/magazine" target="_blank" rel="noopener" class="press-card reveal reveal-delay-4"><div class="press-outlet">Inc. Magazine — May/June 2023</div><div class="press-headline">Five Questions with Entrepreneur Martin Ekechukwu</div><div class="press-body">A conversation about his path from academic scholarship athlete to global brand strategist — listed on the University of Arkansas Notable Alumni page.</div></a>
+      <a href="https://brandinnovators.com/content/brand-innovators-sxsw-2023" target="_blank" rel="noopener" class="press-card reveal reveal-delay-5"><div class="press-outlet">Brand Innovators @ SXSW</div><div class="press-headline">Marketing Leadership Summit — 2023</div><div class="press-body">Featured speaker at Brand Innovators' flagship summit during SXSW, alongside Advertising Week NY and the FounderMade Innovation Show.</div></a>
+    </div>
+  </section>
 
-  function generateCert() {
-    const sel = document.getElementById('donor-state');
-    if (!sel.value) { alert('Please select your home state.'); return; }
-    const [stateName, amount] = sel.value.split('|');
-    document.getElementById('cert-state-name').textContent = stateName;
-    document.getElementById('cert-amount-display').textContent = amount;
-    const out = document.getElementById('certificate-output');
-    out.classList.add('visible');
-    out.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-</script>
-</body>
-</html>
+  <!-- ── PODCAST / VIDEO ── -->
+  <section id="podcast">
+    <div class="reveal">
+      <div class="section-label">On Air</div>
+      <h2 class="podcast-headline">The Quiet<br><em>Truth.</em></h2>
+      <p class="podcast-body">Co-hosted with author and speaker Enitan Bereola, The Quiet Truth is an honest conversation about business, culture, and identity — the things people think but rarely say out loud. Available on YouTube and Spotify.</p>
+      <div class="podcast-links">
+        <a href="https://www.quiettruthpodcast.com/" target="_blank" rel="noopener" class="podcast-link">Official Site</a>
+        <a href="https://open.spotify.com/show/0fUvcYLwnPWwdAJ3qwkCo1?si=a05ba82cf8bc484d" target="_blank" rel="noopener" class="podcast-link">Spotify</a>
+        <a href="https://www.youtube.com/@QuietTruthPodcast" target="_blank" rel="noopener" class="podcast-link">YouTube</a>
+      </div>
+    </div>
+    <div class="video-wrap reveal reveal-delay-2">
+      <div class="video-container" id="videoContainer">
+        <div class="video-placeholder" id="videoPlaceholder">
+          <div class="video-placeholder-bg"></div>
+          <div class="video-placeholder-content" onclick="loadVideo()">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="video-label">The Quiet Truth</div>
+            <div class="video-sublabel">Watch an Episode</div>
+          </div>
+        </div>
+      </div>
+      <a href="https://www.youtube.com/@QuietTruthPodcast" target="_blank" rel="noopener" class="youtube-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        Watch on YouTube
+      </a>
+    </div>
+  </section>
+
+  <!-- ── SPEAKING ── -->
+  <section id="speaking">
+    <div class="speaking-grid">
+      <div>
+        <div class="section-label reveal">On Stage</div>
+        <h2 class="speaking-headline reveal">The conversation<br>continues <em>here.</em></h2>
+        <p class="speaking-body reveal reveal-delay-1">From SXSW to Advertising Week, Martin speaks on brand-building, the creator economy, AI infrastructure, and what it means to build with purpose. He also mentors young Black men annually at Duke's Fuqua School of Business.</p>
+      </div>
+      <div class="speaking-list reveal reveal-delay-2">
+        <div class="speaking-item"><div class="speaking-event">SXSW 2026 <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">Austin · Mar 12–18</div></div>
+        <div class="speaking-item"><div class="speaking-event">AI Builders Day <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">New York · Mar 19</div></div>
+        <div class="speaking-item"><div class="speaking-event">Hustle Fund <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">Apr 7</div></div>
+        <div class="speaking-item"><div class="speaking-event">Cannes Lions 2026 <span class="upcoming-badge">Upcoming</span></div><div class="speaking-meta">Cannes · Jun 22–26</div></div>
+        <div class="speaking-item"><div class="speaking-event">Brand Innovators @ SXSW</div><div class="speaking-meta">Austin · 2023</div></div>
+        <div class="speaking-item"><div class="speaking-event">Advertising Week New York</div><div class="speaking-meta">New York · 2022</div></div>
+        <div class="speaking-item"><div class="speaking-event">FounderMade Innovation Show</div><div class="speaking-meta">New York</div></div>
+        <div class="speaking-item"><div class="speaking-event">The Quiet Truth Podcast</div><div class="speaking-meta">YouTube · Spotify · Co-host</div></div>
+        <div class="speaking-item"><div class="speaking-event">Blackxecutive Podcast</div><div class="speaking-meta">iHeart · Guest</div></div>
+        <div class="speaking-item"><div class="speaking-event">Silver Lining Series</div><div class="speaking-meta">Podcast · Guest</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT'S NEXT ── -->
+  <section id="next">
+    <div class="section-label reveal">What's Next</div>
+    <h2 class="next-headline reveal">Still<br><em>building.</em></h2>
+    <p class="next-intro reveal reveal-delay-1">The work in progress. Three fronts, one through-line: building things that last at the intersection of culture, technology, and commerce.</p>
+    <div class="next-grid">
+      <div class="next-card reveal">
+        <div class="next-card-label">AI · Media · Infrastructure</div>
+        <div class="next-card-title"><a href="https://www.canva.com/design/DAG-g19m2II/PzEtOC4DhLT_LsSSt0lp7w/view?utm_content=DAG-g19m2II&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5b010fc1f6" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(201,169,110,0.4); transition: border-color 0.3s;">FullScale Holdings — Seed Round ↗</a></div>
+        <div class="next-card-body">FullScale is actively raising its seed round to build the AI-powered media infrastructure layer for the creator economy — connecting content monetization, programmatic advertising, and creator tools in one unified platform. Think of it as the missing infrastructure layer between talent and revenue.</div>
+        <div class="next-card-status">Fundraising Active</div>
+      </div>
+      <div class="next-card reveal reveal-delay-1">
+        <div class="next-card-label">Culture · Consulting · Brand</div>
+        <div class="next-card-title">WHTWRKS — New Engagements</div>
+        <div class="next-card-body">WHTWRKS continues to connect the world's most iconic brands to culture. After 15+ years building the playbook for authentic brand-community relationships, the consultancy is taking on new partnerships at the intersection of music, entertainment, and emerging media — with a sharper focus on the brands willing to do more than just show up.</div>
+        <div class="next-card-status">Accepting Partnerships</div>
+      </div>
+      <div class="next-card reveal reveal-delay-2">
+        <div class="next-card-label">Podcast · YouTube · Spotify</div>
+        <div class="next-card-title">The Quiet Truth — Season Ongoing</div>
+        <div class="next-card-body">The Quiet Truth Podcast with Enitan Bereola keeps going deeper — honest conversations about business, identity, and the things people think but rarely say out loud. New episodes drop regularly on YouTube and Spotify. If you've been building something in the dark, this one's for you.</div>
+        <div class="next-card-status">New Episodes Dropping</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONNECT ── -->
+  <section id="connect">
+    <h2 class="connect-headline reveal">Let's<br>build<br><em>together.</em></h2>
+    <div>
+      <p class="connect-body reveal reveal-delay-1">Whether you're an investor, a founder, a brand, or someone with a compelling idea — Martin's approach starts with a conversation.</p>
+      <div class="connect-links reveal reveal-delay-2">
+        <a href="https://www.linkedin.com/in/martinekechukwu/" target="_blank" rel="noopener" class="connect-link">LinkedIn <span>→</span></a>
+        <a href="/cdn-cgi/l/email-protection#45282437312c2b0534302c2031313730312d352a21262436316b262a28" class="connect-link">The Quiet Truth Podcast <span>→</span></a>
+        <a href="/cdn-cgi/l/email-protection#d7bab6a5a3beb997a0bfa3a0a5bca4f9b4b8ba" class="connect-link">WHTWRKS <span>→</span></a>
+        <a href="/cdn-cgi/l/email-protection#86ebe7f4f2efe8c6e1e9e0f3eaeaf5e5e7eae3a8e5e9" class="connect-link">FullScale Holdings <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Martin Ekechukwu</div>
+    <div class="footer-copy">© 2026 · Lagos · Prague · New York</div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Nav
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+    // Reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Hero zoom
+    setTimeout(() => { const img = document.getElementById('heroImg'); if (img) img.style.transform = 'scale(1.05)'; }, 100);
+
+    // Video — YouTube Shorts embed
+    const VIDEO_ID = '4l2RpEmaDAg';
+    function loadVideo() {
+      const container = document.getElementById('videoContainer');
+      container.innerHTML = `<iframe src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>`;
+    }
+  function playMosaicVideo(cell) {
+    const thumb = cell.querySelector('.mosaic-thumb');
+    const video = cell.query
