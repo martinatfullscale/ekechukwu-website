@@ -133,8 +133,10 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-bottom: 2px;
       background: var(--surface); border: 1px solid var(--border);
       transition: border-color 0.3s;
+      text-decoration: none; color: inherit;
     }
     .press-hero:hover { border-color: var(--gold-dim); }
+    a.press-hero:hover .press-hero-headline em { color: var(--cream); }
     .press-hero-img { overflow: hidden; height: 520px; }
     .press-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; transition: transform 0.7s; filter: grayscale(10%); }
     .press-hero:hover .press-hero-img img { transform: scale(1.04); }
@@ -470,16 +472,16 @@
     <div class="section-label reveal">Press</div>
 
     <!-- Inc. Magazine Hero Feature -->
-    <div class="press-hero reveal">
+    <a href="https://apple.news/AIoQlFhpjRg-P1Ed8qag9TA" target="_blank" rel="noopener" class="press-hero reveal">
       <div class="press-hero-img">
         <img src="images/image_10.jpg" alt="Inc. Magazine — Martin Ekechukwu" />
       </div>
       <div class="press-hero-content">
         <div class="press-hero-outlet">Inc. Magazine — May / June 2023</div>
-        <h3 class="press-hero-headline">"You love our culture.<br>You love our music.<br><em>Do you really love us?"</em></h3>
-        <p class="press-hero-body">A feature on Martin and WHTWRKS — and the pivotal moment when PepsiCo called during the summer of 2020 asking for help telling the real story. A candid, magazine-length examination of what it actually means for brands to show up for the communities they profit from.</p>
+        <h3 class="press-hero-headline">Three Years After George Floyd,<br>Has Anything Changed for<br><em>Black Founders?</em></h3>
+        <p class="press-hero-body">Featured in Inc.'s May/June 2023 cover story examining what changed — and what didn't — for Black founders in the years after George Floyd.</p>
       </div>
-    </div>
+    </a>
 
     <div class="press-grid" style="margin-top: 2px;">
       <a href="https://www.linkedin.com/posts/martinekechukwu_topfounders2026-founderindex-creatoreconomy-activity-7462200531688583169-ac3r" target="_blank" rel="noopener" class="press-card reveal"><div class="press-outlet">FounderSquare · Founder Index 2026</div><div class="press-headline">Top 26 Founders of 2026</div><div class="press-body">Named to FounderSquare's Founder Index among founders building extraordinary companies outside traditional networks — recognition for FullScale's mission to give creators the revenue rails the attention economy was missing.</div></a>
